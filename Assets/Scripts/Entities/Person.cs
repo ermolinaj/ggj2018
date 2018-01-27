@@ -35,8 +35,10 @@ public class Person : MonoBehaviour {
 								  int variationID, bool isBlanco,
 								  bool noAnimation=false) {
 
-		// TODO: animate
+		if(traits.ContainsKey(trait))
+			Destroy(traits[trait].traitO);
 
+		// TODO: animate
 
 		traits[trait] = new TraitOpts() {
 			id = variationID,

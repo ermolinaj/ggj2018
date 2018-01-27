@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum ActionGlyph { Up, Down }
 
-public class Glyph {
-
-	public float dummy = 0;
-
+public struct GlyphSequence {
+	public int poncho;
+	public int hat;
+	public ActionGlyph action;
 }
+
+public enum GlyphType {Hat, Poncho, Action};

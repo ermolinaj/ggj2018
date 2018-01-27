@@ -32,7 +32,7 @@ public class TraitController : MonoBehaviour {
 
 	// Give everybody random traits
 	public void RandomizeEveryone() {
-		foreach(var po in GameObject.FindGameObjectsWithTag("person")) {
+		foreach(var po in GameObject.FindGameObjectsWithTag("Person")) {
 			RandomizePerson(po.GetComponent<Person>());
 		};
 	}
@@ -52,8 +52,7 @@ public class TraitController : MonoBehaviour {
 		return new Dictionary<int,int>();
 	}
 
-	public void TransitionTraits(
-		int hatId, int ponchoId, ActionGlyph action) {
+	public void TransitionTraits(GlyphSequence g) {
 		// Harcoded to hats and ponchos,
 		// modify the signature if the logic changes
 
@@ -66,12 +65,12 @@ public class TraitController : MonoBehaviour {
 		List<int> notPonchoBlancoIds = Enumerable.Range(0,poncho.variations.Length)
 			.ToList().Except(new[] {poncho.blancoId}).ToList();
 
-		foreach(var po in GameObject.FindGameObjectsWithTag("person")) {
+		foreach(var po in GameObject.FindGameObjectsWithTag("Person")) {
 			Person p = po.GetComponent<Person>();
 			int currHatId = p.GetTraitVariation("hat");
 			int currPonchoId = p.GetTraitVariation("poncho");
 
-			if(currHatId != hatId) continue;
+			if(currHatId != g.hat) continue;
 
 			if(poncho.blancoId < 0)
 				Debug.LogError("Falta que implementar la lógica"
@@ -82,23 +81,23 @@ public class TraitController : MonoBehaviour {
 
 			//Poncho blanco
 			if (currPonchoId == poncho.blancoId) {
-				if (action == ActionGlyph.Up) {
-					GivePersonTrait(poncho, ponchoId, p);
-				} else if (action == ActionGlyph.Down) {
+				if (g.action == ActionGlyph.Up) {
+					GivePersonTrait(poncho, g.poncho, p);
+				} else if (g.action == ActionGlyph.Down) {
 					int rnd = Random.Range(0, notPonchoBlancoIds.Count);
 					GivePersonTrait(poncho, notPonchoBlancoIds[rnd], p);
 				}
 			}
 			//Matchea
-			else if (currPonchoId == ponchoId)
+			else if (currPonchoId == g.poncho)
 			{
-				if (action == ActionGlyph.Down)
+				if (g.action == ActionGlyph.Down)
 					GivePersonTrait(poncho, poncho.blancoId, p);
 			}
 			// No matchea
 			else
 			{
-				if (action == ActionGlyph.Up)
+				if (g.action == ActionGlyph.Up)
 					GivePersonTrait(poncho, poncho.blancoId, p);
 			}
 		};
