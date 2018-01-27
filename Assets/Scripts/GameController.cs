@@ -100,7 +100,8 @@ public class GameController : MonoBehaviour {
 		}
 
 		foreach(Vector2 p in positions) {
-				var vector = new Vector3 (p.x, 0, p.y);
+			var vector = new Vector3 (p.x, 0, p.y);
+			Instantiate (person, vector, Quaternion.identity);
 		}
 	}
 
