@@ -62,45 +62,46 @@ public class GameController : MonoBehaviour {
 		Vector2 scale = new Vector2(
 			personSpawner.localScale.x, personSpawner.localScale.z);
 
-			   List<Vector2> positions = new List<Vector2>();
-			   bool allPositioned = false;
-			   float sqrDistance = Mathf.Pow(personDistance,2);
-			   for(int j=0; j < 20; j++) {
-					   // Try to position all the people with new coordinates
-					   positions = new List<Vector2>();
+		List<Vector2> positions = new List<Vector2>();
+		bool allPositioned = false;
+		float sqrDistance = Mathf.Pow(personDistance,2);
+		for(int j=0; j < 20; j++) {
+				// Try to position all the people with new coordinates
+				positions = new List<Vector2>();
 
-					   for (int i=0; i < n; i++) {
-							   // Try to position person i, preserving previous positions
-							   allPositioned = false;
-							   for(var attempt = 0; attempt < 50; attempt++) {
-									   Vector2 xz = Random.insideUnitCircle;
-									   xz.Set(xz.x * scale.x + centre.x,
-											   xz.y * scale.y + centre.y);
+				for (int i=0; i < n; i++) {
+						// Try to position person i, preserving previous positions
+						allPositioned = false;
+						for(var attempt = 0; attempt < 50; attempt++) {
+								Vector2 xz = Random.insideUnitCircle;
+								xz.Set(xz.x * scale.x + centre.x,
+										xz.y * scale.y + centre.y);
 
-									   if(positions.Any(v => (v - xz).SqrMagnitude() < sqrDistance))
-											   continue;
+								if(positions.Any(v => (v - xz).SqrMagnitude() < sqrDistance))
+										continue;
 
-									   positions.Add(xz);
-									   allPositioned = true;
-									   break;
-							   }
-							   if(!allPositioned) {
-									   Debug.LogWarning("Failed to position person number "+i
-															   +", retrying");
-									   break;
-							   }
-					   }
+								positions.Add(xz);
+								allPositioned = true;
+								break;
+						}
+						if(!allPositioned) {
+								Debug.LogWarning("Failed to position person number "+i
+														+", retrying");
+								break;
+						}
+				}
 
-					   if(allPositioned) {
-							   break;
-					   }
-			   }
-			   if(!allPositioned) {
-					   Debug.LogError("Failed to position all the people :(");
-			   }
+				if(allPositioned) {
+						break;
+				}
+		}
+		if(!allPositioned) {
+				Debug.LogError("Failed to position all the people :(");
+		}
 
-			   foreach(Vector2 p in positions) {
-					   var vector = new Vector3 (p.x, 0, p.y);
+		foreach(Vector2 p in positions) {
+				var vector = new Vector3 (p.x, 0, p.y);
+		}
 	}
 
 	/* ------------- Glyph sequences ------------ */
