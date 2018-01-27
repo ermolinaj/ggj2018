@@ -22,8 +22,6 @@ public class TraitController : MonoBehaviour {
 
 	// Give a person random traits
 	public void RandomizePerson(Person person) {
-		person.ClearTraits();
-
 		foreach(Trait t in traits) {
 			int varId = Random.Range(0, t.variations.Length);
 			GivePersonTrait(t, varId, person, true);
@@ -39,11 +37,8 @@ public class TraitController : MonoBehaviour {
 
 	private void GivePersonTrait(
 			Trait t, int variantId, Person person, bool noAnimation=false) {
-
 		Sprite variant = t.variations[variantId];
-		GameObject to = Instantiate(t.prefab, person.transform);
-		to.GetComponent<SpriteRenderer>().sprite = variant;
-		person.SetTraitVariation(t.name, to, variantId,
+		person.SetTraitVariation(t.name, variantId, variant,
 			variantId == t.blancoId, noAnimation);
 	}
 

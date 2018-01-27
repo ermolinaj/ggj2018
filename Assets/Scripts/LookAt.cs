@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LookAt : MonoBehaviour {
 
-	public Transform target;
+	public string targetTag;
 	public float yawVariation = 10;
 
 	float yawOffset;
+	Transform target;
 
 	void Start() {
 		yawOffset = Random.Range(-yawVariation/2,yawVariation/2);
+		target = GameObject.FindGameObjectWithTag(targetTag).transform;
 	}
 
 	void Update () {

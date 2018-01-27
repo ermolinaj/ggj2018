@@ -3,20 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[S.Serializable]
+public struct TraitOpts {
+	public string name;
+	public SpriteRenderer traitRenderer;
+	[HideInInspector]
+	public int variationID;
+	[HideInInspector]
+	public bool isBlanco;
+}
+
 public class Person : MonoBehaviour {
 
-	struct TraitOpts {
-		public int id;
-		public GameObject traitO;
-		public bool isBlanco;
-	}
-
-	private Dictionary<S.String, TraitOpts> traits;
-
-	void Awake()
-	{
-		traits = new Dictionary<S.String, TraitOpts>();
-	}
+	public TraitOpts[] traits;
 
 	void Start() {
 		GameController.instance.traitController.RandomizePerson(this);
@@ -29,30 +28,25 @@ public class Person : MonoBehaviour {
 	/* ------------- Traits --------------- */
 
 	public int GetTraitVariation(S.String trait) {
-		if(traits.ContainsKey(trait))
-			return traits[trait].id;
+		TraitOpts t = S.Array.Find(traits, x => x.name == trait);
+		if(t.name == trait)
+			return t.variationID;
 		return -1;
 	}
 
 	// Set the internal data with no transition
-	public void SetTraitVariation(S.String trait, GameObject go,
-								  int variationID, bool isBlanco,
+	public void SetTraitVariation(S.String trait, int variationID,
+								  Sprite sprite, bool isBlanco,
 								  bool noAnimation=false) {
 
-		if(traits.ContainsKey(trait))
-			Destroy(traits[trait].traitO);
+		TraitOpts t = S.Array.Find(traits, x => x.name == trait);
+		if(t.name != trait)
+			Debug.LogError("Trait "+trait+" does not exist", this);
 
 		// TODO: animate
 
-		traits[trait] = new TraitOpts() {
-			id = variationID,
-			traitO = go,
-			isBlanco = isBlanco,
-		};
+		t.traitRenderer.sprite = sprite;
+		t.variationID = variationID;
+		t.isBlanco = isBlanco;
 	}
-
-	public void ClearTraits() {
-		traits.Clear();
-	}
-
 }
