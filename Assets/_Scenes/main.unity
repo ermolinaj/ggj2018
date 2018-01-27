@@ -175,6 +175,11 @@ Prefab:
       propertyPath: glyphId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114039173100527044, guid: 955940b8869114151966bed6b605f414,
+        type: 2}
+      propertyPath: inputButton
+      value: Glyph 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 955940b8869114151966bed6b605f414, type: 2}
   m_IsPrefabParent: 0
@@ -321,6 +326,11 @@ Prefab:
       propertyPath: glyphId
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114039173100527044, guid: 955940b8869114151966bed6b605f414,
+        type: 2}
+      propertyPath: inputButton
+      value: Glyph 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 955940b8869114151966bed6b605f414, type: 2}
   m_IsPrefabParent: 0
@@ -382,6 +392,11 @@ Prefab:
       propertyPath: glyphId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114039173100527044, guid: 955940b8869114151966bed6b605f414,
+        type: 2}
+      propertyPath: inputButton
+      value: Glyph 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 955940b8869114151966bed6b605f414, type: 2}
   m_IsPrefabParent: 0
@@ -426,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e542a4d1752284a6e9759662053fdb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPersons: 1
+  maxPersons: 10
   maxGlyphs: 4
   person: {fileID: 1207231165224846, guid: cf4f53fe029d64c52951f3f9b2f45d37, type: 2}
   traitController: {fileID: 1774533161}
@@ -530,6 +545,11 @@ Prefab:
         type: 2}
       propertyPath: glyphId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114039173100527044, guid: 955940b8869114151966bed6b605f414,
+        type: 2}
+      propertyPath: inputButton
+      value: Glyph 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 955940b8869114151966bed6b605f414, type: 2}
