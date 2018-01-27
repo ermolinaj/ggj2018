@@ -5,7 +5,7 @@ using UnityEngine;
 public class Repulse : MonoBehaviour {
 
 	public string repulseTag;
-	public float force = 1;
+	public float strength = -0.01f;
 
 	private Rigidbody rb;
 
@@ -15,15 +15,27 @@ public class Repulse : MonoBehaviour {
 
 	void Update () {
 		foreach(var o in GameObject.FindGameObjectsWithTag(repulseTag)) {
-			applyRepulsion(o);
+			if(o != this)
+				applyRepulsion(o);
 		}
 	}
 
 	void applyRepulsion(GameObject target) {
 		Rigidbody trb = target.GetComponent<Rigidbody>();
 		Vector3 repulseDiff = target.transform.position - transform.position;
-		float sqrRepulse = repulseDiff.sqrMagnitude;
+		float sqrDist = repulseDiff.sqrMagnitude;
+		sqrDist = Mathf.Pow(sqrDist, 2);
 		float repulseMass = trb.mass;
-		trb.AddForce(repulseDiff / -sqrRepulse * repulseMass * force);
+
+		float div = -sqrDist * repulseMass * strength;
+		if(div > float.Epsilon) {
+			repulseDiff /= div;
+			repulseDiff = new Vector3(
+				Mathf.Clamp(repulseDiff.x, -1, 1),
+				Mathf.Clamp(repulseDiff.y, -1, 1),
+				Mathf.Clamp(repulseDiff.z, -1, 1)
+			);
+			trb.AddForce(repulseDiff);
+		}
 	}
 }
