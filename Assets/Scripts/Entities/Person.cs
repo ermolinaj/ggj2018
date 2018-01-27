@@ -7,15 +7,14 @@ using UnityEngine;
 public struct TraitOpts {
 	public string name;
 	public SpriteRenderer traitRenderer;
-	[HideInInspector]
-	public int variationID;
-	[HideInInspector]
-	public bool isBlanco;
 }
 
 public class Person : MonoBehaviour {
 
 	public TraitOpts[] traits;
+	
+	Dictionary<string, int> variationIds = new Dictionary<string, int>();
+	Dictionary<string, bool> isBlancos = new Dictionary<string, bool>();
 
 	void Start() {
 		GameController.instance.traitController.RandomizePerson(this);
@@ -27,10 +26,9 @@ public class Person : MonoBehaviour {
 
 	/* ------------- Traits --------------- */
 
-	public int GetTraitVariation(S.String trait) {
-		TraitOpts t = S.Array.Find(traits, x => x.name == trait);
-		if(t.name == trait)
-			return t.variationID;
+	public int GetTraitVariation(string trait) {
+		if(variationIds.ContainsKey(trait))
+			return variationIds[trait];
 		return -1;
 	}
 
@@ -46,7 +44,7 @@ public class Person : MonoBehaviour {
 		// TODO: animate
 
 		t.traitRenderer.sprite = sprite;
-		t.variationID = variationID;
-		t.isBlanco = isBlanco;
+		variationIds[trait] = variationID;
+		isBlancos[trait] = isBlanco;
 	}
 }
