@@ -47,6 +47,17 @@ public class TraitController : MonoBehaviour {
 		return new Dictionary<int,int>();
 	}
 
+	public bool CheckIfEverybodyHaveSameColor(int color) {
+		foreach (var po in GameObject.FindGameObjectsWithTag("Person")) {
+			Person p = po.GetComponent<Person> ();
+			int currPonchoId = p.GetTraitVariation ("poncho");
+			if (currPonchoId != color) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void TransitionTraits(GlyphSequence g) {
 		// Harcoded to hats and ponchos,
 		// modify the signature if the logic changes

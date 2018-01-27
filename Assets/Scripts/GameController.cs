@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
 
 	public int numPersons = 20;
 	public int maxGlyphs = 4;
+	public int maxRetries = 15;
+
 	public GameObject person;
 	public Transform personSpawner;
 	public float personDistance = 1;
@@ -25,6 +27,8 @@ public class GameController : MonoBehaviour {
 	bool waitingForGlyphs = false;
 	GlyphSequence currSequence = new GlyphSequence();
 	int currGlyphInSeq = 0;
+	int currentTry = 0;
+	int winColor;
 
 	void Awake() {
 		if(instance == null)
@@ -40,10 +44,14 @@ public class GameController : MonoBehaviour {
 		// Generate the glyphOrder
 		glyphOrder = new List<GlyphType>()
 			{GlyphType.Hat, GlyphType.Poncho, GlyphType.Action};
+
+		// Generating the subset of symbols to use as representation
 		symbolsToUse = symbols.OrderBy (x => Random.Range(0, 100)).Take (maxGlyphs).ToList();
 		Debug.Log(new string(symbolsToUse.ToArray()));
-
 		GlyphTextBoard.instance.setRepresentation (symbolsToUse);
+
+		// Setting the color of poncho everyone must use for you to win
+		winColor = Random.Range (0, maxGlyphs);
 
 		waitingForGlyphs = true;
 	}
@@ -136,6 +144,18 @@ public class GameController : MonoBehaviour {
 		currGlyphInSeq = 0;
 	
 		GlyphTextBoard.instance.showGlyphs (glyphIdSequences);
+
+		currentTry += 1;
+
+	}
+
+	void CheckFinishConditions() {
+		if (traitController.CheckIfEverybodyHaveSameColor (winColor)) {
+			Debug.Log ("Ganaste!");
+		}
+		if (currentTry >= maxRetries) {
+			Debug.Log ("Perdiste!");
+		}
 	}
 
 }
