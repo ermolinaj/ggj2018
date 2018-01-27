@@ -8,7 +8,9 @@ public struct Trait {
 	public S.String name;
 	public GameObject prefab;
 	public Sprite[] variations;
-	public int blancoId; // -1 for none
+
+	[Tooltip("-1 for none")]
+	public int blancoId;
 };
 
 public class TraitController : MonoBehaviour {
@@ -17,13 +19,15 @@ public class TraitController : MonoBehaviour {
 
 	// Give a person random traits
 	public void RandomizePerson(Person person) {
-		person.traits.Clear();
+		person.ClearTraits();
 
 		foreach(Trait t in fixedTraits) {
-			Sprite variant = t.variations[Random.Range(0, t.variations.Length)];
+			int varId = Random.Range(0, t.variations.Length);
+			Sprite variant = t.variations[varId];
+
 			GameObject to = Instantiate(t.prefab, person.transform);
 			to.GetComponent<SpriteRenderer>().sprite = variant;
-			person.traits[t.name] = to;
+			person.SetTraitVariation(t.name, to, varId, varId == t.blancoId);
 		}
 	}
 
