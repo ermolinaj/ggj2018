@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ActionGlyph { Up, Down }
+
 public class GameController : MonoBehaviour {
 
 	public static GameController instance = null;

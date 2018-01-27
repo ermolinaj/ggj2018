@@ -22,7 +22,7 @@ public class Person : MonoBehaviour {
 		GameController.instance.traitController.RandomizePerson(this);
 	}
 
-	/* Traits */
+	/* ------------- Traits --------------- */
 
 	public int GetTraitVariation(S.String trait) {
 		if(traits.ContainsKey(trait))
@@ -32,21 +32,17 @@ public class Person : MonoBehaviour {
 
 	// Set the internal data with no transition
 	public void SetTraitVariation(S.String trait, GameObject go,
-								  int variationID, bool isBlanco) {
+								  int variationID, bool isBlanco,
+								  bool noAnimation=false) {
+
+		// TODO: animate
+
+
 		traits[trait] = new TraitOpts() {
 			id = variationID,
 			traitO = go,
 			isBlanco = isBlanco,
 		};
-	}
-
-	// Set the internal data with transitions
-	public void UpdateTraitVariation(S.String trait, GameObject go,
-									 int variationID, bool isBlanco) {
-		
-		// TODO: run animations
-
-		SetTraitVariation(trait, go, variationID, isBlanco);
 	}
 
 	public void ClearTraits() {
