@@ -460,6 +460,7 @@ MonoBehaviour:
     variations:
     - {fileID: 21300000, guid: 10952ccd5cee94097ac8dab6da3ef2e4, type: 3}
     - {fileID: 21300000, guid: 73f60a3c9e64840d6b27d3fcb5b53355, type: 3}
+    blancoId: -1
 --- !u!4 &1774533162
 Transform:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class Person : MonoBehaviour {
 	}
 
 	void Start() {
-		TraitController.instance.RandomizePerson(this);
+		GameController.instance.traitController.RandomizePerson(this);
 	}
 
 }

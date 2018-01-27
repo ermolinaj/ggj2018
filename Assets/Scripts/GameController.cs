@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+	public static GameController instance = null;
+
 	public int maxPersons = 20;
 	public int maxGlyphs = 4;
 	public GameObject person;
@@ -11,6 +13,13 @@ public class GameController : MonoBehaviour {
 	public TraitController traitController;
 
 	List<string> glyphs = new List<string>();
+
+	void Awake() {
+		if(instance == null)
+			instance = this;
+		else if(instance != this)
+			Destroy(gameObject);
+	}
 
 	// Use this for initialization
 	void Start () {

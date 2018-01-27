@@ -8,20 +8,12 @@ public struct Trait {
 	public S.String name;
 	public GameObject prefab;
 	public Sprite[] variations;
+	public int blancoId; // -1 for none
 };
 
 public class TraitController : MonoBehaviour {
 
-	public static TraitController instance = null;
-
 	public Trait[] fixedTraits;
-
-	void Awake() {
-		if(instance == null)
-			instance = this;
-		else if(instance != this)
-			Destroy(gameObject);
-	}
 
 	// Give a person random traits
 	public void RandomizePerson(Person person) {
