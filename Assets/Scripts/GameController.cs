@@ -54,6 +54,10 @@ public class GameController : MonoBehaviour {
 		winColor = Random.Range (0, maxGlyphs);
 
 		waitingForGlyphs = true;
+
+
+		Trait poncho = traitController.getTrait ("poncho");
+		ObjectiveTablet.instance.setTrait (poncho.variations[winColor]);
 	}
 
 	void SpawnPeople(int n) {

@@ -58,12 +58,16 @@ public class TraitController : MonoBehaviour {
 		return true;
 	}
 
+	public Trait getTrait (string name) {
+		return S.Array.Find<Trait> (traits, t => t.name == name);
+	}
+
 	public void TransitionTraits(GlyphSequence g) {
 		// Harcoded to hats and ponchos,
 		// modify the signature if the logic changes
 
-		Trait hat = S.Array.Find<Trait>(traits, t => t.name == "hat");
-		Trait poncho = S.Array.Find<Trait>(traits, t => t.name == "poncho");
+		Trait hat = getTrait("hat");
+		Trait poncho = getTrait("poncho");
 
 		if(hat.name == null) Debug.LogError("hat trait not defined");
 		if(poncho.name == null) Debug.LogError("poncho trait not defined");
