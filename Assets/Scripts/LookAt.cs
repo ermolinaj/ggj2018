@@ -17,6 +17,7 @@ public class LookAt : MonoBehaviour {
 
 	void Update () {
 		transform.LookAt(target);
-		transform.Rotate(0,yawOffset,0);
+		var rot = transform.rotation;
+		transform.rotation = Quaternion.Euler(0,rot.y + yawOffset,0);
 	}
 }
