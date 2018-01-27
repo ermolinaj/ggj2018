@@ -20,6 +20,11 @@ public class Person : MonoBehaviour {
 
 	void Start() {
 		GameController.instance.traitController.RandomizePerson(this);
+		Spawn();
+	}
+
+	void Spawn() {
+		// Fall from the sky
 	}
 
 	/* ------------- Traits --------------- */
