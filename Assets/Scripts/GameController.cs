@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour {
 	public int persons = 20;
 	public GameObject person;
 
+	public TraitController traitController;
+
 	// Use this for initialization
 	void Start () {
 		

@@ -1,18 +1,19 @@
-﻿using System.Collections;
+﻿using S = System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class Person : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public Dictionary<S.String, GameObject> traits;
+
+	void Awake()
+	{
+		traits = new Dictionary<S.String, GameObject>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void Start() {
+		TraitController.instance.RandomizePerson(this);
 	}
+
 }
