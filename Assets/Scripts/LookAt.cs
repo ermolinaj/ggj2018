@@ -5,12 +5,12 @@ using UnityEngine;
 public class LookAt : MonoBehaviour {
 
 	public Transform target;
-	public float yawVariation = 0.1f;
+	public float yawVariation = 10;
 
 	float yawOffset;
 
 	void Start() {
-		yawOffset = Random.Range(-yawVariation,yawVariation);
+		yawOffset = Random.Range(-yawVariation/2,yawVariation/2);
 	}
 
 	void Update () {

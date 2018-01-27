@@ -43,10 +43,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GameObject[] persons = GameObject.FindGameObjectsWithTag("Person");
-
+		//GameObject[] persons = GameObject.FindGameObjectsWithTag("Person");
 		//Debug.Log (persons.Length);
-
 	}
 
 	/* ------------- Glyph sequences ------------ */
