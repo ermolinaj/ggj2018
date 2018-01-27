@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-	public int persons = 20;
+	public int maxPersons = 20;
+	public int maxGlyphs = 4;
 	public GameObject person;
 
 	public TraitController traitController;
 
+	List<string> glyphs = new List<string>();
+
 	// Use this for initialization
 	void Start () {
-		
-		for (var y = 0; y < persons; y++) {
+		for (var y = 0; y < maxPersons; y++) {
 			var vector = new Vector2 (Random.Range (0, 10), Random.Range (0, 10));
 			Instantiate (person, vector, Quaternion.identity);
 		}
@@ -26,4 +28,12 @@ public class GameController : MonoBehaviour {
 		//Debug.Log (persons.Length);
 
 	}
+
+	public void glyphPressed(string glyphReference) {
+		if (glyphs.Count < maxGlyphs) {
+			this.glyphs.Add(glyphReference);
+		}
+		Debug.Log (string.Join (", ", glyphs.ToArray()));
+	}
+
 }

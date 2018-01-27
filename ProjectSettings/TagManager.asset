@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Person
+  - GlyphButton
   - Trait
   layers:
   - Default
