@@ -126,7 +126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.z
@@ -268,7 +268,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.z
@@ -357,7 +357,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.z
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 1088046028}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,7 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e542a4d1752284a6e9759662053fdb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persons: 20
+  maxPersons: 20
+  maxGlyphs: 4
   person: {fileID: 1207231165224846, guid: cf4f53fe029d64c52951f3f9b2f45d37, type: 2}
 --- !u!1001 &1918143573
 Prefab:
@@ -455,7 +456,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4503380586592580, guid: 955940b8869114151966bed6b605f414, type: 2}
       propertyPath: m_LocalPosition.z

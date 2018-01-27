@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlyphButton : MonoBehaviour {
 
-	public string name;
+	//public string glyphReference;
 
 	private bool clicked;
 
@@ -20,7 +20,9 @@ public class GlyphButton : MonoBehaviour {
 
 
 	void OnMouseUp() {
-		Debug.Log("Soy " + this.gameObject.name + "!");
+		GameObject gc = GameObject.FindGameObjectsWithTag ("GameController")[0];
+			
+		gc.SendMessage ("glyphPressed", this.gameObject.name);
 	}
 
 }
