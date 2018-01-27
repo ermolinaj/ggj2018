@@ -19,7 +19,6 @@ public class GlyphButton : MonoBehaviour {
 	}
 
 	void SelectGlyph() {
-		Debug.Log("Selected glyph " + glyphId);
 		GameController.instance.glyphPressed(glyphId);
 	}
 }

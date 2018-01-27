@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		// Create the people
 		for (var y = 0; y < maxPersons; y++) {
-			var vector = new Vector2 (Random.Range (-20, 20),
+			var vector = new Vector2 (Random.Range (-5, 5),
 									  Random.Range (-1.5f, 4));
 			Instantiate (person, vector, Quaternion.identity);
 		}

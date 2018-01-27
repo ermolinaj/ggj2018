@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e542a4d1752284a6e9759662053fdb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPersons: 20
+  maxPersons: 1
   maxGlyphs: 4
   person: {fileID: 1207231165224846, guid: cf4f53fe029d64c52951f3f9b2f45d37, type: 2}
   traitController: {fileID: 1774533161}
