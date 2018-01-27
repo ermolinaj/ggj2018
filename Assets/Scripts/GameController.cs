@@ -6,9 +6,10 @@ public class GameController : MonoBehaviour {
 
 	public static GameController instance = null;
 
-	public int maxPersons = 20;
+	public int numPersons = 20;
 	public int maxGlyphs = 4;
 	public GameObject person;
+	public Transform personSpawner;
 
 	public TraitController traitController;
 
@@ -28,23 +29,27 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Create the people
-		for (var y = 0; y < maxPersons; y++) {
-			var vector = new Vector2 (Random.Range (-5, 5),
-									  Random.Range (-1.5f, 4));
-			Instantiate (person, vector, Quaternion.identity);
-		}
+		SpawnPeople(numPersons);
 		
 		// Generate the glyphOrder
 		glyphOrder = new List<GlyphType>()
 			{GlyphType.Hat, GlyphType.Poncho, GlyphType.Action};
 		waitingForGlyphs = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		//GameObject[] persons = GameObject.FindGameObjectsWithTag("Person");
-		//Debug.Log (persons.Length);
+
+	void SpawnPeople(int n) {
+		Vector2 centre = new Vector2(
+			personSpawner.position.x, personSpawner.position.z);
+		Vector2 scale = new Vector2(
+			personSpawner.localScale.x, personSpawner.localScale.z);
+
+		for (var i = 0; i < n; i++) {
+			Vector2 xz = Random.insideUnitCircle;
+			var vector = new Vector3 (xz.x * scale.x + centre.x,
+									  0,
+									  xz.y * scale.y + centre.y);
+			Instantiate (person, vector, Quaternion.identity);
+		}
 	}
 
 	/* ------------- Glyph sequences ------------ */
