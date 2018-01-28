@@ -29,9 +29,4 @@ public class Intro : MonoBehaviour {
 	public void OnAnimationFinish() {
 		SceneManager.LoadScene(nextScene);
 	}
-
-	void Update() {
-		if(Input.GetButtonDown("Skip"))
-			SceneManager.LoadScene(nextScene);
-	}
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [S.Serializable]
 public struct Spawner
@@ -18,6 +19,9 @@ public class GameController : MonoBehaviour
 
 	public int maxGlyphs = 4;
 	public int maxRetries = 15;
+
+	public float waitBeforeFinish = 3f;
+	public string winScene = "win";
 
 	public GameObject person;
 	public Spawner[] personSpawners;
@@ -61,11 +65,12 @@ public class GameController : MonoBehaviour
 		// Setting the color of poncho everyone must use for you to win
 		winColor = StaticPoncho.winPoncho;
 
-		Invoke("turnOnWaitingForGlyphs", 4);
-		nightCycles = GetComponents<NightCycle>().ToList();
+		Invoke ("turnOnWaitingForGlyphs", 4);
+		nightCycles = GetComponents<NightCycle> ().ToList ();
 	}
 
-	void turnOnWaitingForGlyphs() {
+	void turnOnWaitingForGlyphs ()
+	{
 		waitingForGlyphs = true;
 	}
 
@@ -173,7 +178,8 @@ public class GameController : MonoBehaviour
 		waitingForGlyphs = false;
 		logBoard.addSymbolSet (currentGlyphIdSequence);
 
-		foreach(var n in nightCycles) n.oneStep();
+		foreach (var n in nightCycles)
+			n.oneStep ();
 
 		StartCoroutine (PostCompleteGlyphSequence ());
 
@@ -188,7 +194,6 @@ public class GameController : MonoBehaviour
 		yield return new WaitForSeconds (2f);
 
 		Debug.Log ("Transitioning traits");
-		waitingForGlyphs = true;
 		priest.GetComponent<Animator> ().SetBool ("Gospelling", false);
 
 		traitController.TransitionTraits (currSequence);
@@ -200,30 +205,64 @@ public class GameController : MonoBehaviour
 		principalSymbolSet.setEmptySymbols ();
 
 		currentTry += 1;
+		yield return new WaitForSeconds (2f);
+		waitingForGlyphs = true;
 		CheckFinishConditions ();
-
 	}
 
-
+	public int getPersonCount() {
+		int i = 0;
+		foreach (var s in personSpawners)
+			i += s.numPersons;
+		foreach (var s in disposablePersonSpawnern)
+			i += s.numPersons;
+		return i;
+	}
 
 	void CheckFinishConditions ()
 	{
 		if (traitController.CheckIfEverybodyHaveSameColor (winColor)) {
 			Debug.Log ("Ganaste!");
-			ThrowConfetti ();
-		}
-		if (currentTry >= maxRetries) {
+			StaticStats.convertedCount = getPersonCount ();
+			StartCoroutine (ThrowConfetti ());
+		} else if (currentTry >= maxRetries) {
+			StaticStats.convertedCount = traitController.CountColor (winColor);
 			Debug.Log ("Perdiste!");
+			StartCoroutine (NightFall ());
+		} else {
+			return;
 		}
+
+		StaticStats.personCount = getPersonCount ();
+		StaticStats.nightsCount = currentTry;
+		waitingForGlyphs = false;
 	}
 
-	void ThrowConfetti ()
+	IEnumerator ThrowConfetti ()
 	{
 		var confetties = GameObject.FindGameObjectsWithTag ("Confetti");
 
 		foreach (var confetti in confetties) {
 			confetti.GetComponent<ParticleSystem> ().Play ();
+			yield return new WaitForSeconds (1.0f);
 		}
+
+		yield return new WaitForSeconds (2.0f);
+		SceneManager.LoadScene (winScene);
+	}
+
+	IEnumerator NightFall ()
+	{
+		var canvas = GameObject.FindObjectOfType<CanvasFader> ();
+		canvas.FadeOut ();
+
+		yield return new WaitForSeconds (1f);
+
+		var fader = GameObject.FindGameObjectWithTag ("Fader");
+		fader.GetComponent<Animator> ().Play ("Fader - Fade Out");
+
+		yield return new WaitForSeconds (7f);
+		SceneManager.LoadScene (winScene);
 	}
 
 }
