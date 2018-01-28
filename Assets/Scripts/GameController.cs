@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
 		winColor = StaticPoncho.winPoncho;
 
 		waitingForGlyphs = true;
+		TurnConfetti (false);
 	}
 
 	// Use this for initialization
@@ -202,10 +203,16 @@ public class GameController : MonoBehaviour
 	{
 		if (traitController.CheckIfEverybodyHaveSameColor (winColor)) {
 			Debug.Log ("Ganaste!");
+			TurnConfetti (true);
 		}
 		if (currentTry >= maxRetries) {
 			Debug.Log ("Perdiste!");
 		}
+	}
+
+	void TurnConfetti (bool enabled)
+	{
+		GameObject.FindGameObjectWithTag ("Confetti").SetActive (enabled);
 	}
 
 }
