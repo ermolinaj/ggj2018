@@ -22,9 +22,18 @@ public class TraitController : MonoBehaviour {
 
 	// Give a person random traits
 	public void RandomizePerson(Person person) {
-		foreach(Trait t in traits) {
-			int varId = Random.Range(0, t.variations.Length);
-			GivePersonTrait(t, varId, person, true);
+		if(!person.amIDisposable) {
+			foreach(Trait t in traits) {
+				int varId = Random.Range(0, t.variations.Length);
+				GivePersonTrait(t, varId, person, true);
+			}
+		} else {
+			foreach(Trait t in traits) {
+				int varId = t.name == "poncho"
+					? GameController.instance.winColor
+					: Random.Range(0, t.variations.Length);
+				GivePersonTrait(t, varId, person, true);
+			}
 		}
 	}
 
@@ -77,6 +86,9 @@ public class TraitController : MonoBehaviour {
 
 		foreach(var po in GameObject.FindGameObjectsWithTag("Person")) {
 			Person p = po.GetComponent<Person>();
+
+			if(p.amIDisposable) continue;
+
 			int currHatId = p.GetTraitVariation("hat");
 			int currPonchoId = p.GetTraitVariation("poncho");
 
