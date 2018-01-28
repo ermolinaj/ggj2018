@@ -14,6 +14,7 @@ public class GlyphButton : MonoBehaviour, IPointerClickHandler
 	[HideInInspector]
 	public Sprite depressed;
 	public Sprite generic;
+	public Sprite genericGlowing;
 
 	Image img;
 
