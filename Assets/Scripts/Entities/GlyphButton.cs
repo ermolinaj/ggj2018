@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GlyphButton : MonoBehaviour {
+public class GlyphButton : MonoBehaviour, IPointerClickHandler
+{
 
 	public int glyphId;
 	public string inputButton;
@@ -15,27 +17,41 @@ public class GlyphButton : MonoBehaviour {
 
 	Image img;
 
-	void Awake() {
-		img = GetComponent<Image>();
+	void Awake ()
+	{
+		img = GetComponent<Image> ();
 		depressed = img.sprite;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(inputButton != "" && Input.GetButtonDown(inputButton)) {
-			SelectGlyph();
-			img.sprite = pressed;
-		}
-		if(inputButton != "" && Input.GetButtonUp(inputButton)) {
-			img.sprite = depressed;
+	void Update ()
+	{
+		if (inputButton != "" && Input.GetButtonDown (inputButton)) {
+			SelectGlyph ();
 		}
 	}
 
-	void OnMouseUp() {
-		SelectGlyph();
+	public void OnPointerClick (PointerEventData pev)
+	{
+		SelectGlyph ();
 	}
 
-	void SelectGlyph() {
-		GameController.instance.glyphPressed(glyphId);
+	void OnMouseUp ()
+	{
+		SelectGlyph ();
+	}
+
+	void SelectGlyph ()
+	{
+		img.sprite = pressed;
+		GameController.instance.glyphPressed (glyphId);
+
+		StartCoroutine (DepressButtonIn (0.2f));
+	}
+
+	IEnumerator DepressButtonIn (float seconds)
+	{
+		yield return new WaitForSeconds (seconds);
+		img.sprite = depressed;
 	}
 }
