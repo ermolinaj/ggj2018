@@ -236,12 +236,6 @@ public class GameController : MonoBehaviour
 		StaticStats.personCount = getPersonCount ();
 		StaticStats.nightsCount = currentTry;
 		waitingForGlyphs = false;
-		StartCoroutine (GoToFinishScreen (winScene));
-	}
-
-	IEnumerator GoToFinishScreen(string scene) {
-		yield return new WaitForSeconds(waitBeforeFinish);
-		SceneManager.LoadScene (scene);
 	}
 
 	IEnumerator ThrowConfetti ()
@@ -252,6 +246,9 @@ public class GameController : MonoBehaviour
 			confetti.GetComponent<ParticleSystem> ().Play ();
 			yield return new WaitForSeconds (1.0f);
 		}
+
+		yield return new WaitForSeconds (2.0f);
+		SceneManager.LoadScene (winScene);
 	}
 
 	IEnumerator NightFall ()
@@ -263,6 +260,9 @@ public class GameController : MonoBehaviour
 
 		var fader = GameObject.FindGameObjectWithTag ("Fader");
 		fader.GetComponent<Animator> ().Play ("Fader - Fade Out");
+
+		yield return new WaitForSeconds (7f);
+		SceneManager.LoadScene (winScene);
 	}
 
 }
