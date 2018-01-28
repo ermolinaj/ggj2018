@@ -214,7 +214,9 @@ public class GameController : MonoBehaviour
 			ThrowConfetti ();
 		}
 		if (currentTry >= maxRetries) {
-			Debug.Log ("Perdiste!");
+			int score = traitController.CountColor (winColor);
+			Debug.Log ("Perdiste! Tu score es: " + score.ToString());
+
 		}
 	}
 

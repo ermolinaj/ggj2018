@@ -74,6 +74,17 @@ public class TraitController : MonoBehaviour {
 			}
 		}
 		return true;
+	}	
+
+	public int CountColor(int color) {
+		int count = 0;
+		foreach (var po in GameObject.FindGameObjectsWithTag("Person")) {
+			Person p = po.GetComponent<Person> ();
+			int currPonchoId = p.GetTraitVariation ("poncho");
+			if (currPonchoId != color)
+				count++;
+		}
+		return count;
 	}
 
 	public Trait getTrait (string name) {
