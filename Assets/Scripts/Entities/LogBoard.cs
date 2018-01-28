@@ -22,10 +22,14 @@ public class LogBoard : MonoBehaviour {
 				new Vector3(p.x, p.y+logSpacing, p.z);
 		}
 
-		Vector3 pos = new Vector3(0, 0, 0);
 		GameObject l =
-			Instantiate(logLine, pos, Quaternion.identity, transform);
-		l.GetComponent<RectTransform>().position = pos;
+			Instantiate(logLine, logLine.transform.position,
+				logLine.transform.rotation, transform);
+		RectTransform rt = l.GetComponent<RectTransform>();
+		rt.anchorMax = new Vector2(1,1);
+		rt.anchorMin = new Vector2(1,1);
+		rt.pivot = new Vector2(1,1);
+		rt.anchoredPosition = Vector3.zero;
 
 		setLogLine(l.GetComponent<LogLine>(), glyphSeq);
 		log.Enqueue(l);

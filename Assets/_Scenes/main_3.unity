@@ -879,11 +879,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 212610349527027210, guid: 465f9775eec2044e49e2d49017eb9538,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 465f9775eec2044e49e2d49017eb9538, type: 2}
   m_IsPrefabParent: 0
@@ -1784,7 +1779,7 @@ MonoBehaviour:
   - {fileID: 452642353}
   historyLogSize: 10
   logLine: {fileID: 1190738819308500, guid: 77c5daf93f8dc4393a5114c9bf42cd49, type: 2}
-  logSpacing: 120
+  logSpacing: -27
 --- !u!114 &1640766032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2051,28 +2046,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14962f2cf459d4b33af18760c08a0b3e, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2035389237 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1568767885500818, guid: 465f9775eec2044e49e2d49017eb9538,
-    type: 2}
-  m_PrefabInternal: {fileID: 949182130}
---- !u!95 &2035389238
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2035389237}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e16096f4f6e2b4a378591071819d4156, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2071230473
 GameObject:
   m_ObjectHideFlags: 0
