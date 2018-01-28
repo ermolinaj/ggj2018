@@ -29,7 +29,9 @@ AnimationClip:
     - time: 18
       value: {fileID: 21300000, guid: af72c750b3a614f3e93e80be0b48b7df, type: 3}
     - time: 22
-      value: {fileID: 21300000, guid: af72c750b3a614f3e93e80be0b48b7df, type: 3}
+      value: {fileID: 21300000, guid: 92f280082de6d44cf8afaf03b97665d1, type: 3}
+    - time: 30
+      value: {fileID: 21300000, guid: 92f280082de6d44cf8afaf03b97665d1, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -54,13 +56,14 @@ AnimationClip:
     - {fileID: 21300000, guid: da565b4d4946043aa9723b1481837c20, type: 3}
     - {fileID: 21300000, guid: e8b14579985e54ff89d54fbe467b50fe, type: 3}
     - {fileID: 21300000, guid: af72c750b3a614f3e93e80be0b48b7df, type: 3}
-    - {fileID: 21300000, guid: af72c750b3a614f3e93e80be0b48b7df, type: 3}
+    - {fileID: 21300000, guid: 92f280082de6d44cf8afaf03b97665d1, type: 3}
+    - {fileID: 21300000, guid: 92f280082de6d44cf8afaf03b97665d1, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 23
+    m_StopTime: 31
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -81,21 +84,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 13
+  - time: 22
     functionName: ShowPoncho
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 18
+  - time: 29
     functionName: HidePoncho
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 22
+  - time: 30
     functionName: OnAnimationFinish
     data: 
     objectReferenceParameter: {fileID: 0}
