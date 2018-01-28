@@ -421,6 +421,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5ad100b6141b64490a0f512b09c54171, type: 3}
   poncho: {fileID: 644872731}
   percent: {fileID: 1206901093}
+  loseSprite: {fileID: 21300000, guid: 24198c265f4e04b89b0249c34ae88626, type: 3}
 --- !u!114 &807084032
 MonoBehaviour:
   m_ObjectHideFlags: 0
