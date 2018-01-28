@@ -52,6 +52,8 @@ public class GameController : MonoBehaviour
 	[HideInInspector]
 	public int winColor;
 
+	public bool veriDificul = false;
+
 	void Awake ()
 	{
 		if (instance == null)
@@ -62,6 +64,10 @@ public class GameController : MonoBehaviour
 		// Generate the glyphOrder
 		glyphOrder = new List<GlyphType> ()
 			{ GlyphType.Hat, GlyphType.Poncho, GlyphType.Action };
+
+		if (veriDificul) {
+			glyphOrder = glyphOrder.OrderBy (x => Random.Range (0, 100)).ToList ();
+		}
 
 		// Generating the subset of symbols to use as representation
 		symbolsToUse = symbols.OrderBy (x => Random.Range (0, 100)).Take (maxGlyphs).ToList ();
