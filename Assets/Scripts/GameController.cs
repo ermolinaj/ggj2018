@@ -187,7 +187,7 @@ public class GameController : MonoBehaviour
 		foreach (var n in nightCycles)
 			n.oneStep ();
 
-		turnProgressBar.setProgress((float)currentTry / maxRetries);
+		turnProgressBar.setProgress ((float)currentTry / maxRetries);
 
 		StartCoroutine (PostCompleteGlyphSequence ());
 
@@ -199,9 +199,9 @@ public class GameController : MonoBehaviour
 
 		priest.GetComponent<Animator> ().SetBool ("Gospelling", true);
 
-		AudioSource audioSource = GetComponent<AudioSource>();
+		AudioSource audioSource = GetComponent<AudioSource> ();
 
-		audioSource.PlayOneShot(dialogs[currentGlyphIdSequence[0]], 1f);
+		audioSource.PlayOneShot (dialogs [currentGlyphIdSequence [0]], 1f);
 
 		yield return new WaitForSeconds (2f);
 
@@ -222,7 +222,8 @@ public class GameController : MonoBehaviour
 		CheckFinishConditions ();
 	}
 
-	public int getPersonCount() {
+	public int getPersonCount ()
+	{
 		int i = 0;
 		foreach (var s in personSpawners)
 			i += s.numPersons;
@@ -253,6 +254,11 @@ public class GameController : MonoBehaviour
 	IEnumerator ThrowConfetti ()
 	{
 		var confetties = GameObject.FindGameObjectsWithTag ("Confetti");
+		var happySounds = GameObject.FindGameObjectsWithTag ("HappySounds");
+
+		foreach (var sound in happySounds) {
+			sound.GetComponent<AudioSource> ().Play ();
+		}
 
 		foreach (var confetti in confetties) {
 			confetti.GetComponent<ParticleSystem> ().Play ();
@@ -267,6 +273,12 @@ public class GameController : MonoBehaviour
 	{
 		var canvas = GameObject.FindObjectOfType<CanvasFader> ();
 		canvas.FadeOut ();
+
+		var sadSounds = GameObject.FindGameObjectsWithTag ("SadSounds");
+
+		foreach (var sound in sadSounds) {
+			sound.GetComponent<AudioSource> ().Play ();
+		}
 
 		yield return new WaitForSeconds (1f);
 

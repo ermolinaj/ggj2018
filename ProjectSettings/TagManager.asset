@@ -11,6 +11,8 @@ TagManager:
   - Priest
   - Confetti
   - Fader
+  - HappySounds
+  - SadSounds
   layers:
   - Default
   - TransparentFX
