@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
 	public float personDistance = 1;
 
 	public TraitController traitController;
+	public SymbolSet principalSymbolSet;
 
 	List<char> symbols = new List<char> {'△', '□', 'X', 'O', 'A', 'B', 'C'};
 	List<char> symbolsToUse;
@@ -149,6 +150,7 @@ public class GameController : MonoBehaviour {
 
 		currGlyphInSeq++;
 		currentGlyphIdSequence.Add (glyphId);
+		principalSymbolSet.renderGlyphs (currentGlyphIdSequence);
 		if(currGlyphInSeq >= glyphOrder.Count)
 			CompleteGlyphSequence();
 	}
@@ -163,6 +165,7 @@ public class GameController : MonoBehaviour {
 		currGlyphInSeq = 0;
 	
 		GlyphTextBoard.instance.showGlyphs (glyphIdSequences);
+		principalSymbolSet.setEmptySymbols ();
 
 		currentTry += 1;
 		CheckFinishConditions ();
