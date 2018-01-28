@@ -61,11 +61,12 @@ public class GameController : MonoBehaviour
 		// Setting the color of poncho everyone must use for you to win
 		winColor = StaticPoncho.winPoncho;
 
-		Invoke("turnOnWaitingForGlyphs", 4);
-		nightCycles = GetComponents<NightCycle>().ToList();
+		Invoke ("turnOnWaitingForGlyphs", 4);
+		nightCycles = GetComponents<NightCycle> ().ToList ();
 	}
 
-	void turnOnWaitingForGlyphs() {
+	void turnOnWaitingForGlyphs ()
+	{
 		waitingForGlyphs = true;
 	}
 
@@ -173,7 +174,8 @@ public class GameController : MonoBehaviour
 		waitingForGlyphs = false;
 		logBoard.addSymbolSet (currentGlyphIdSequence);
 
-		foreach(var n in nightCycles) n.oneStep();
+		foreach (var n in nightCycles)
+			n.oneStep ();
 
 		StartCoroutine (PostCompleteGlyphSequence ());
 
@@ -211,22 +213,34 @@ public class GameController : MonoBehaviour
 	{
 		if (traitController.CheckIfEverybodyHaveSameColor (winColor)) {
 			Debug.Log ("Ganaste!");
-			ThrowConfetti ();
+			StartCoroutine (ThrowConfetti ());
 		}
 		if (currentTry >= maxRetries) {
 			int score = traitController.CountColor (winColor);
-			Debug.Log ("Perdiste! Tu score es: " + score.ToString());
-
+			Debug.Log ("Perdiste! Tu score es: " + score.ToString ());
+			StartCoroutine (NightFall ());
 		}
 	}
 
-	void ThrowConfetti ()
+	IEnumerator ThrowConfetti ()
 	{
 		var confetties = GameObject.FindGameObjectsWithTag ("Confetti");
 
 		foreach (var confetti in confetties) {
 			confetti.GetComponent<ParticleSystem> ().Play ();
+			yield return new WaitForSeconds (1.0f);
 		}
+	}
+
+	IEnumerator NightFall ()
+	{
+		var canvas = GameObject.FindObjectOfType<CanvasFader> ();
+		canvas.FadeOut ();
+
+		yield return new WaitForSeconds (1f);
+
+		var fader = GameObject.FindGameObjectWithTag ("Fader");
+		fader.GetComponent<Animator> ().Play ("Fader - Fade Out");
 	}
 
 }
