@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
 		// Setting the color of poncho everyone must use for you to win
 		winColor = StaticPoncho.winPoncho;
 
-		Invoke("turnOnWaitingForGlyphs", 3);
+		Invoke("turnOnWaitingForGlyphs", 4);
 		nightCycles = GetComponents<NightCycle>().ToList();
 	}
 
