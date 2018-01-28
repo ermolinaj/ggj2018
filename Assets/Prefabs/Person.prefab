@@ -258,6 +258,7 @@ MonoBehaviour:
     traitRenderer: {fileID: 212718051791806602}
   skinSprites: []
   amIDisposable: 1
+  clones: []
   minSkinTint: 0.5
   maxSkinTint: 1
 --- !u!114 &114553682053726362
@@ -273,6 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: MainCamera
   yawVariation: 10
+  setOnlyYaw: 1
+  onlySetAtStart: 0
 --- !u!212 &212050632582734224
 SpriteRenderer:
   m_ObjectHideFlags: 1

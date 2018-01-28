@@ -167,7 +167,6 @@ public class GameController : MonoBehaviour {
 
 		currentTry += 1;
 		CheckFinishConditions ();
-
 	}
 
 	void CheckFinishConditions() {
