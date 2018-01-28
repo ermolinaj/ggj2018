@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198112318043696708}
   - component: {fileID: 199962789246625736}
   m_Layer: 0
-  m_Name: Confeti
+  m_Name: Confetti
   m_TagString: Confetti
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
