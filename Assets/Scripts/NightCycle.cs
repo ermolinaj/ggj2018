@@ -10,8 +10,8 @@ public class NightCycle : MonoBehaviour {
 
 	Quaternion initialRotation;
 
-	public Quaternion finalRotation =
-		Quaternion.Euler(170, -30, 0);
+	public Vector3 finalRotationS = new Vector3(170, -30, 0);
+	Quaternion finalRotation;
 	Quaternion stepRotation;
 	Quaternion currRotTarget;
 
@@ -29,6 +29,7 @@ public class NightCycle : MonoBehaviour {
 		numSteps = GameController.instance.maxRetries;
 
 		initialRotation = sunLight.transform.rotation;
+		finalRotation = Quaternion.Euler(finalRotationS);
 		currRotTarget = initialRotation;
 
 		lightComp = sunLight.GetComponent<Light>();

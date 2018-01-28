@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
 	public TraitController traitController;
 	public SymbolSet principalSymbolSet;
 	public LogBoard logBoard;
-	NightCycle nightCycle;
+	List<NightCycle> nightCycles;
 
 	List<char> symbols = new List<char> { '△', '□', 'X', 'O', 'A', 'B', 'C' };
 	List<char> symbolsToUse;
@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
 
 		waitingForGlyphs = true;
 
-		nightCycle = GetComponent<NightCycle> ();
+		nightCycles = GetComponents<NightCycle>().ToList();
 	}
 
 	// Use this for initialization
@@ -170,7 +170,7 @@ public class GameController : MonoBehaviour
 		waitingForGlyphs = false;
 		logBoard.addSymbolSet (currentGlyphIdSequence);
 
-		nightCycle.oneStep ();
+		foreach(var n in nightCycles) n.oneStep();
 
 		StartCoroutine (PostCompleteGlyphSequence ());
 

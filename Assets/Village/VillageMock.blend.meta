@@ -26,6 +26,21 @@ ModelImporter:
     100036: Cube_010
     100038: Cube_011
     100040: Cube_012
+    100042: Cube_000
+    100044: Cube_013
+    100046: Plane_001
+    100048: Plane_002
+    100050: Plane_003
+    100052: Plane_004
+    100054: Plane_005
+    100056: Plane_006
+    100058: Plane_007
+    100060: Plane_008
+    100062: Plane_009
+    100064: Plane_010
+    100066: Plane_011
+    100068: Plane_012
+    100070: Plane_013
     400000: Cone
     400002: Cone_001
     400004: Cone_002
@@ -47,6 +62,21 @@ ModelImporter:
     400036: Cube_010
     400038: Cube_011
     400040: Cube_012
+    400042: Cube_000
+    400044: Cube_013
+    400046: Plane_001
+    400048: Plane_002
+    400050: Plane_003
+    400052: Plane_004
+    400054: Plane_005
+    400056: Plane_006
+    400058: Plane_007
+    400060: Plane_008
+    400062: Plane_009
+    400064: Plane_010
+    400066: Plane_011
+    400068: Plane_012
+    400070: Plane_013
     2300000: Cone
     2300002: Cone_001
     2300004: Cone_002
@@ -67,6 +97,21 @@ ModelImporter:
     2300034: Cube_010
     2300036: Cube_011
     2300038: Cube_012
+    2300040: Cube_000
+    2300042: Cube_013
+    2300044: Plane_001
+    2300046: Plane_002
+    2300048: Plane_003
+    2300050: Plane_004
+    2300052: Plane_005
+    2300054: Plane_006
+    2300056: Plane_007
+    2300058: Plane_008
+    2300060: Plane_009
+    2300062: Plane_010
+    2300064: Plane_011
+    2300066: Plane_012
+    2300068: Plane_013
     3300000: Cone
     3300002: Cone_001
     3300004: Cone_002
@@ -87,6 +132,21 @@ ModelImporter:
     3300034: Cube_010
     3300036: Cube_011
     3300038: Cube_012
+    3300040: Cube_000
+    3300042: Cube_013
+    3300044: Plane_001
+    3300046: Plane_002
+    3300048: Plane_003
+    3300050: Plane_004
+    3300052: Plane_005
+    3300054: Plane_006
+    3300056: Plane_007
+    3300058: Plane_008
+    3300060: Plane_009
+    3300062: Plane_010
+    3300064: Plane_011
+    3300066: Plane_012
+    3300068: Plane_013
     4300000: Cone_003
     4300002: Cone_002
     4300004: Cone_001
@@ -107,9 +167,29 @@ ModelImporter:
     4300034: Cube_010
     4300036: Cube_009
     4300038: Cube_008
+    4300040: Cube_000
+    4300042: Cube_013
+    4300044: Plane_013
+    4300046: Plane_012
+    4300048: Plane_011
+    4300050: Plane_010
+    4300052: Plane_009
+    4300054: Plane_008
+    4300056: Plane_007
+    4300058: Plane_006
+    4300060: Plane_005
+    4300062: Plane_004
+    4300064: Plane_003
+    4300066: Plane_002
+    4300068: Plane_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: fc8c5a8bc38875741a72169b53da70f7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -172,6 +252,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
