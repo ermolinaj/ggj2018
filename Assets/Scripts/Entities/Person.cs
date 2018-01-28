@@ -72,8 +72,14 @@ public class Person : MonoBehaviour
 	                              Sprite sprite, bool isBlanco,
 	                              bool noAnimation)
 	{
+
+		if (trait == "poncho" && variationIds.ContainsKey(trait) && variationIds [trait] != variationID) {
+			this.GetComponent<AudioSource> ().Play ();
+		}
+
 		variationIds [trait] = variationID;
 		isBlancos [trait] = isBlanco;
+
 		if (!noAnimation) {
 			this.GetComponent<Animator> ().Play ("Person - Change Poncho");
 			yield return new WaitForSeconds (1.37f * 1 / this.GetComponent<Animator> ().speed);
