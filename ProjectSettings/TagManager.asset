@@ -10,6 +10,7 @@ TagManager:
   - GlyphTextBoard
   - Priest
   - Confetti
+  - Fader
   layers:
   - Default
   - TransparentFX
