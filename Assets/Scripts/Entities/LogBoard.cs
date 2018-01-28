@@ -12,6 +12,8 @@ public class LogBoard : MonoBehaviour {
 	public GameObject logLine;
 	public float logSpacing = 10;
 
+	public CanvasScaler cScaler;
+
 	Queue<GameObject> log = new Queue<GameObject>();
 
 	public void addSymbolSet(List<int> glyphSeq) {
@@ -19,7 +21,7 @@ public class LogBoard : MonoBehaviour {
 		foreach(var ll in log) {
 			Vector3 p = ll.transform.position;
 			ll.GetComponent<RectTransform>().position =
-				new Vector3(p.x, p.y+logSpacing, p.z);
+				new Vector3(p.x, p.y+logSpacing*cScaler.scaleFactor/2, p.z);
 		}
 
 		GameObject l =
