@@ -1,35 +1,34 @@
-﻿using System.Collections;
+﻿using S = System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SymbolSet : MonoBehaviour {
 
-	public List<SpriteRenderer> symbols;
-	public Sprite emptySymbol;
+	public Image[] symbols;
+	public GlyphButton[] buttons;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		setEmptySymbols ();
 	}
 
 	public void setEmptySymbols() {
-		foreach (SpriteRenderer s in symbols) {
-			s.sprite = emptySymbol;
+		foreach (Image s in symbols) {
+			s.enabled = false;
 		}
 	}
 
 	public void renderGlyphs (List<int> currentGlyphIdSequence) {
-		Dictionary<int, Sprite> symbolSprites = new Dictionary<int, Sprite> ();
-
-		foreach(var gb in GameObject.FindGameObjectsWithTag("GlyphButton")) {
-			int id = gb.GetComponent<GlyphButton>().glyphId;
-			symbolSprites [id] = gb.GetComponent<SpriteRenderer> ().sprite;
-		};
-
 		for (int i = 0; i < currentGlyphIdSequence.Count; i++) {
-			symbols [i].sprite = symbolSprites [currentGlyphIdSequence[i]];
-		}
+			int id = currentGlyphIdSequence[i];
+			GlyphButton gb = S.Array.Find(buttons, g => g.glyphId == id);
 
+			symbols[i].enabled = true;
+			Image img = symbols[i];
+			img.sprite = gb.depressed;
+		}
 	}
 
 }
