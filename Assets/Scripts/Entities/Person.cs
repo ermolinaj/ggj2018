@@ -21,7 +21,7 @@ public class Person : MonoBehaviour
 
 	public bool amIDisposable = true;
 	[HideInInspector]
-	public List<Person> clones = new List<Person>();
+	public List<Person> clones = new List<Person> ();
 
 	[Range (0f, 1f)]
 	public float minSkinTint = .5f;
@@ -74,7 +74,7 @@ public class Person : MonoBehaviour
 	{
 		if (!noAnimation) {
 			this.GetComponent<Animator> ().Play ("Person - Change Poncho");
-			yield return new WaitForSeconds (1.2f);
+			yield return new WaitForSeconds (1.37f * 1 / this.GetComponent<Animator> ().speed);
 		}
 
 		t.traitRenderer.sprite = sprite;

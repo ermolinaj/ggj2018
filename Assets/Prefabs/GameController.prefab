@@ -93,6 +93,7 @@ MonoBehaviour:
   personDistance: 1
   traitController: {fileID: 114892144284037182}
   principalSymbolSet: {fileID: 0}
+  logBoard: {fileID: 0}
   winColor: 0
 --- !u!114 &114892144284037182
 MonoBehaviour:
@@ -121,5 +122,5 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 7c0c16198927a4cc8bb7229e137d3394, type: 3}
     - {fileID: 21300000, guid: d8df0899e71c845fbb76d762c62ab1d9, type: 3}
     - {fileID: 21300000, guid: 5ad100b6141b64490a0f512b09c54171, type: 3}
-    - {fileID: 21300000, guid: 04f146c94fdcb410b84486c16e42c8be, type: 3}
+    - {fileID: 21300000, guid: b44075610d2f946b1bc5b07253b49e3b, type: 3}
     blancoId: 4
