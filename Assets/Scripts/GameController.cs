@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [S.Serializable]
 public struct Spawner
@@ -18,6 +19,9 @@ public class GameController : MonoBehaviour
 
 	public int maxGlyphs = 4;
 	public int maxRetries = 15;
+
+	public float waitBeforeFinish = 3f;
+	public string winScene = "win";
 
 	public GameObject person;
 	public Spawner[] personSpawners;
@@ -204,22 +208,40 @@ public class GameController : MonoBehaviour
 		currentTry += 1;
 		yield return new WaitForSeconds (2f);
 		CheckFinishConditions ();
-
 	}
 
-
+	public int getPersonCount() {
+		int i = 0;
+		foreach (var s in personSpawners)
+			i += s.numPersons;
+		foreach (var s in disposablePersonSpawnern)
+			i += s.numPersons;
+		return i;
+	}
 
 	void CheckFinishConditions ()
 	{
 		if (traitController.CheckIfEverybodyHaveSameColor (winColor)) {
 			Debug.Log ("Ganaste!");
+			StaticStats.convertedCount = getPersonCount ();
 			StartCoroutine (ThrowConfetti ());
-		}
-		if (currentTry >= maxRetries) {
-			int score = traitController.CountColor (winColor);
-			Debug.Log ("Perdiste! Tu score es: " + score.ToString ());
+		} else if (currentTry >= maxRetries) {
+			StaticStats.convertedCount = traitController.CountColor (winColor);
+			Debug.Log ("Perdiste!");
 			StartCoroutine (NightFall ());
+		} else {
+			return;
 		}
+
+		StaticStats.personCount = getPersonCount ();
+		StaticStats.nightsCount = currentTry;
+		waitingForGlyphs = false;
+		StartCoroutine (GoToFinishScreen (winScene));
+	}
+
+	IEnumerator GoToFinishScreen(string scene) {
+		yield return new WaitForSeconds(waitBeforeFinish);
+		SceneManager.LoadScene (scene);
 	}
 
 	IEnumerator ThrowConfetti ()
