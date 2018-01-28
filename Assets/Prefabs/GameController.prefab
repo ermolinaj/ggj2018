@@ -81,11 +81,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e542a4d1752284a6e9759662053fdb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numPersons: 20
   maxGlyphs: 4
+  maxRetries: 15
   person: {fileID: 1207231165224846, guid: cf4f53fe029d64c52951f3f9b2f45d37, type: 2}
-  personSpawner: {fileID: 0}
+  personSpawners:
+  - box: {fileID: 0}
+    numPersons: 10
+  disposablePersonSpawnern:
+  - box: {fileID: 0}
+    numPersons: 15
+  personDistance: 1
   traitController: {fileID: 114892144284037182}
+  principalSymbolSet: {fileID: 0}
+  winColor: 0
 --- !u!114 &114892144284037182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,13 +109,18 @@ MonoBehaviour:
   - name: hat
     prefab: {fileID: 1653212260993756, guid: d2fe319a6958f47cca16086203bd56a1, type: 2}
     variations:
-    - {fileID: 21300000, guid: 10952ccd5cee94097ac8dab6da3ef2e4, type: 3}
-    - {fileID: 21300000, guid: 73f60a3c9e64840d6b27d3fcb5b53355, type: 3}
-    blancoId: -1
+    - {fileID: 21300000, guid: 743140f0ff777445dbc73973b5ae5701, type: 3}
+    - {fileID: 21300000, guid: a7f54f86a962e47beb88553eec792921, type: 3}
+    - {fileID: 21300000, guid: 27702db1c18814e47b0b9ad75212955f, type: 3}
+    - {fileID: 21300000, guid: ad7c7faa48e6b4224a829e51173d20fb, type: 3}
+    - {fileID: 21300000, guid: 78eb2afbaa98c461abdd8327441e87b8, type: 3}
+    blancoId: 0
   - name: poncho
     prefab: {fileID: 1281992812962140, guid: 8051386525743476d87ed98d2277f84e, type: 2}
     variations:
-    - {fileID: 21300000, guid: 61ec813ded8a04489beeafcdfd13adfb, type: 3}
-    - {fileID: 21300000, guid: cb307e58bcb7e45e9ac7f3eb42bd28f1, type: 3}
-    - {fileID: 21300000, guid: f36ae205512ec45669fdde71ce30eda3, type: 3}
-    blancoId: 2
+    - {fileID: 21300000, guid: b44075610d2f946b1bc5b07253b49e3b, type: 3}
+    - {fileID: 21300000, guid: 7c0c16198927a4cc8bb7229e137d3394, type: 3}
+    - {fileID: 21300000, guid: d8df0899e71c845fbb76d762c62ab1d9, type: 3}
+    - {fileID: 21300000, guid: 5ad100b6141b64490a0f512b09c54171, type: 3}
+    - {fileID: 21300000, guid: 85a4396b4007b4ead8915400b6f48967, type: 3}
+    blancoId: 0
