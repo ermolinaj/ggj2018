@@ -13,7 +13,8 @@ public class WinScn : MonoBehaviour {
 	void Start() {
 		poncho.sprite = ponchoVariations[StaticStats.winPoncho];
 		percent.text = "" +
-			((float)StaticStats.convertedCount / StaticStats.personCount)
+			(int)(100f * (float)StaticStats.convertedCount
+				/ StaticStats.personCount)
 			+ "%";
 	}
 }
