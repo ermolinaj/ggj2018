@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
 	public TraitController traitController;
 	public SymbolSet principalSymbolSet;
 	public LogBoard logBoard;
+	NightCycle nightCycle;
 
 	List<char> symbols = new List<char> { '△', '□', 'X', 'O', 'A', 'B', 'C' };
 	List<char> symbolsToUse;
@@ -35,7 +36,7 @@ public class GameController : MonoBehaviour
 	List<int> currentGlyphIdSequence = new List<int> ();
 	List<GlyphType> glyphOrder;
 
-	bool waitingForGlyphs = false;
+	public bool waitingForGlyphs = false;
 	GlyphSequence currSequence = new GlyphSequence ();
 	int currGlyphInSeq = 0;
 	int currentTry = 0;
@@ -61,6 +62,9 @@ public class GameController : MonoBehaviour
 		winColor = StaticPoncho.winPoncho;
 
 		waitingForGlyphs = true;
+		TurnConfetti (false);
+
+		nightCycle = GetComponent<NightCycle> ();
 	}
 
 	// Use this for initialization
@@ -164,7 +168,10 @@ public class GameController : MonoBehaviour
 	{
 		Debug.Log ("Completed a new sequence");
 
+		waitingForGlyphs = false;
 		logBoard.addSymbolSet (currentGlyphIdSequence);
+
+		nightCycle.oneStep ();
 
 		StartCoroutine (PostCompleteGlyphSequence ());
 
@@ -179,6 +186,7 @@ public class GameController : MonoBehaviour
 		yield return new WaitForSeconds (2f);
 
 		Debug.Log ("Transitioning traits");
+		waitingForGlyphs = true;
 		priest.GetComponent<Animator> ().SetBool ("Gospelling", false);
 
 		traitController.TransitionTraits (currSequence);
@@ -200,10 +208,16 @@ public class GameController : MonoBehaviour
 	{
 		if (traitController.CheckIfEverybodyHaveSameColor (winColor)) {
 			Debug.Log ("Ganaste!");
+			TurnConfetti (true);
 		}
 		if (currentTry >= maxRetries) {
 			Debug.Log ("Perdiste!");
 		}
+	}
+
+	void TurnConfetti (bool enabled)
+	{
+		GameObject.FindGameObjectWithTag ("Confetti").SetActive (enabled);
 	}
 
 }

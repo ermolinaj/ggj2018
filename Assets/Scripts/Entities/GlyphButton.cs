@@ -43,6 +43,9 @@ public class GlyphButton : MonoBehaviour, IPointerClickHandler
 
 	void SelectGlyph ()
 	{
+		if (!GameController.instance.waitingForGlyphs)
+			return;
+		
 		img.sprite = pressed;
 		GameController.instance.glyphPressed (glyphId);
 
