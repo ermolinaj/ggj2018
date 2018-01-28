@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
 
 	public TraitController traitController;
 	public SymbolSet principalSymbolSet;
+	public LogBoard logBoard;
 
 	List<char> symbols = new List<char> {'△', '□', 'X', 'O', 'A', 'B', 'C'};
 	List<char> symbolsToUse;
@@ -65,8 +66,6 @@ public class GameController : MonoBehaviour {
 			SpawnPeople(s.numPersons, s.box, false);
 		foreach(var s in disposablePersonSpawnern)
 			SpawnPeople(s.numPersons, s.box, true);
-
-		GlyphTextBoard.instance.setRepresentation (symbolsToUse);
 
 		Trait poncho = traitController.getTrait ("poncho");
 		ObjectiveTablet.instance.setTrait (poncho.variations[winColor]);
@@ -159,12 +158,12 @@ public class GameController : MonoBehaviour {
 		Debug.Log("Completed a new sequence");
 		traitController.TransitionTraits(currSequence);
 
-		glyphIdSequences.Add (currentGlyphIdSequence);
+		logBoard.addSymbolSet(currentGlyphIdSequence);
+
 		currentGlyphIdSequence = new List<int> ();
 		currSequence = new GlyphSequence();
 		currGlyphInSeq = 0;
 	
-		GlyphTextBoard.instance.showGlyphs (glyphIdSequences);
 		principalSymbolSet.setEmptySymbols ();
 
 		currentTry += 1;
