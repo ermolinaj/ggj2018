@@ -200,6 +200,7 @@ public class GameController : MonoBehaviour
 		principalSymbolSet.setEmptySymbols ();
 
 		currentTry += 1;
+		yield return new WaitForSeconds (2f);
 		CheckFinishConditions ();
 
 	}
