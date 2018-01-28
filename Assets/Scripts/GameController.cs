@@ -194,7 +194,6 @@ public class GameController : MonoBehaviour
 		yield return new WaitForSeconds (2f);
 
 		Debug.Log ("Transitioning traits");
-		waitingForGlyphs = true;
 		priest.GetComponent<Animator> ().SetBool ("Gospelling", false);
 
 		traitController.TransitionTraits (currSequence);
@@ -207,6 +206,7 @@ public class GameController : MonoBehaviour
 
 		currentTry += 1;
 		yield return new WaitForSeconds (2f);
+		waitingForGlyphs = true;
 		CheckFinishConditions ();
 	}
 

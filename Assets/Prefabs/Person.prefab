@@ -256,7 +256,9 @@ MonoBehaviour:
     traitRenderer: {fileID: 212050632582734224}
   - name: poncho
     traitRenderer: {fileID: 212718051791806602}
-  skinSprites: []
+  skinSprites:
+  - {fileID: 212487010847340020}
+  - {fileID: 212484861981221332}
   amIDisposable: 1
   clones: []
   minSkinTint: 0.5
