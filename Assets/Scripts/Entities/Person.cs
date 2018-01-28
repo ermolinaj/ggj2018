@@ -12,11 +12,27 @@ public struct TraitOpts {
 public class Person : MonoBehaviour {
 
 	public TraitOpts[] traits;
+	public SpriteRenderer[] skinSprites;
 	
 	Dictionary<string, int> variationIds = new Dictionary<string, int>();
 	Dictionary<string, bool> isBlancos = new Dictionary<string, bool>();
 
 	public bool amIDisposable = true;
+
+	[Range(0f, 1f)]
+	public float minSkinTint=.5f;
+	[Range(0f, 1f)]
+	public float maxSkinTint=1f;
+	float skinTint;
+
+	void Start() {
+		if(maxSkinTint < minSkinTint) maxSkinTint = minSkinTint;
+		skinTint = Random.Range(minSkinTint, maxSkinTint);
+
+		foreach(SpriteRenderer r in skinSprites) {
+			r.color = new Color(skinTint, skinTint, skinTint);
+		}
+	}
 
 	void Setup(bool disposable) {
 		amIDisposable = disposable;
