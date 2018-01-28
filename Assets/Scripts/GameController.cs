@@ -35,21 +35,14 @@ public class GameController : MonoBehaviour {
 	GlyphSequence currSequence = new GlyphSequence();
 	int currGlyphInSeq = 0;
 	int currentTry = 0;
-	int winColor;
+	[HideInInspector]
+	public int winColor;
 
 	void Awake() {
 		if(instance == null)
 			instance = this;
 		else if(instance != this)
 			Destroy(gameObject);
-	}
-
-	// Use this for initialization
-	void Start () {
-		foreach(var s in personSpawners)
-			SpawnPeople(s.numPersons, s.box, false);
-		foreach(var s in disposablePersonSpawnern)
-			SpawnPeople(s.numPersons, s.box, true);
 		
 		// Generate the glyphOrder
 		glyphOrder = new List<GlyphType>()
@@ -58,13 +51,21 @@ public class GameController : MonoBehaviour {
 		// Generating the subset of symbols to use as representation
 		symbolsToUse = symbols.OrderBy (x => Random.Range(0, 100)).Take (maxGlyphs).ToList();
 		Debug.Log(new string(symbolsToUse.ToArray()));
-		GlyphTextBoard.instance.setRepresentation (symbolsToUse);
 
 		// Setting the color of poncho everyone must use for you to win
 		winColor = Random.Range (0, maxGlyphs);
 
 		waitingForGlyphs = true;
+	}
 
+	// Use this for initialization
+	void Start () {
+		foreach(var s in personSpawners)
+			SpawnPeople(s.numPersons, s.box, false);
+		foreach(var s in disposablePersonSpawnern)
+			SpawnPeople(s.numPersons, s.box, true);
+
+		GlyphTextBoard.instance.setRepresentation (symbolsToUse);
 
 		Trait poncho = traitController.getTrait ("poncho");
 		ObjectiveTablet.instance.setTrait (poncho.variations[winColor]);
