@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour {
 		Debug.Log(new string(symbolsToUse.ToArray()));
 
 		// Setting the color of poncho everyone must use for you to win
-		winColor = Random.Range (0, maxGlyphs);
+		winColor = StaticPoncho.winPoncho;
 
 		waitingForGlyphs = true;
 	}
@@ -127,7 +127,6 @@ public class GameController : MonoBehaviour {
 	/* ------------- Glyph sequences ------------ */
 
 	public void glyphPressed(int glyphId) {
-		// TODO: randomize glyphId orders
 		if (!waitingForGlyphs) return;
 
 		GlyphType type = glyphOrder[currGlyphInSeq];
