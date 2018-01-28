@@ -16,10 +16,12 @@ public class LogBoard : MonoBehaviour {
 
 		Vector3 pos = gameObject.transform.position;
 		pos.y -= symbolSetsCount;
-		GameObject p = Instantiate (symbolSet, pos, Quaternion.identity, this.transform);
+		//Vector3 pos = new Vector3(0, symbolSetsCount, 0);
+		GameObject p = Instantiate (symbolSet, pos, symbolSet.transform.rotation, transform);
 
 		SymbolSet newSet = p.GetComponent<SymbolSet> ();
 
+		p.transform.rotation = Quaternion.identity;
 		newSet.renderGlyphs(currentGlyphIdSequence);
 		//p.transform.localScale = new Vector3 (.1f, .1f, .1f);
 		//p.transform.SetParent (transform);
