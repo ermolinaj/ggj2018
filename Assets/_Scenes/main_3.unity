@@ -348,6 +348,7 @@ MonoBehaviour:
   pressed: {fileID: 21300000, guid: 26f70be5104db4e52a72cfa7a3deaa9a, type: 3}
   depressed: {fileID: 0}
   generic: {fileID: 21300000, guid: d4278c5e3e50c4d5b866825c2cb37307, type: 3}
+  genericGlowing: {fileID: 21300000, guid: 1218a963789b34062b85ff706dc0313a, type: 3}
 --- !u!114 &407765712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +557,7 @@ MonoBehaviour:
   pressed: {fileID: 21300000, guid: 29e516e0c51da424f82e8786acec67ec, type: 3}
   depressed: {fileID: 0}
   generic: {fileID: 21300000, guid: 3b7910a108cd54a8e89cb70dfee59110, type: 3}
+  genericGlowing: {fileID: 21300000, guid: 195d0115953db42f8abf0e71a36454f4, type: 3}
 --- !u!114 &452642354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,6 +823,7 @@ MonoBehaviour:
   pressed: {fileID: 21300000, guid: c5f24aa5fe9674675886099b6af26f66, type: 3}
   depressed: {fileID: 0}
   generic: {fileID: 21300000, guid: 8adbf884833ce4cca86b5ed8d2d53c46, type: 3}
+  genericGlowing: {fileID: 21300000, guid: 2493d0927346d4ad3bad41533d11bf8f, type: 3}
 --- !u!114 &704995125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,6 +1687,7 @@ MonoBehaviour:
   pressed: {fileID: 21300000, guid: cdf28c5c558bf46e0aae047daed45697, type: 3}
   depressed: {fileID: 0}
   generic: {fileID: 21300000, guid: 15c3a6791d46c458099b6c1cfaf5392f, type: 3}
+  genericGlowing: {fileID: 21300000, guid: 8c789f6faf3ab47c6aa55e1ec373c5a8, type: 3}
 --- !u!114 &1503958863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1935,7 +1939,7 @@ RectTransform:
   m_GameObject: {fileID: 1640766029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 390, y: 215.22935, z: 0}
-  m_LocalScale: {x: 0.20564622, y: 0.20564617, z: 0.20564617}
+  m_LocalScale: {x: 0.341707, y: 0.341707, z: 0.341707}
   m_Children: []
   m_Father: {fileID: 1679836437}
   m_RootOrder: 2
@@ -1963,7 +1967,7 @@ MonoBehaviour:
   - {fileID: 452642353}
   historyLogSize: 10
   logLine: {fileID: 1190738819308500, guid: 77c5daf93f8dc4393a5114c9bf42cd49, type: 2}
-  logSpacing: -80
+  logSpacing: -60
   cScaler: {fileID: 1679836435}
 --- !u!114 &1640766032
 MonoBehaviour:
@@ -2256,7 +2260,7 @@ Prefab:
     - target: {fileID: 114257814540539142, guid: 14962f2cf459d4b33af18760c08a0b3e,
         type: 2}
       propertyPath: maxRetries
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 14962f2cf459d4b33af18760c08a0b3e, type: 2}

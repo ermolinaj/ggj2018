@@ -47,7 +47,7 @@ public class LogBoard : MonoBehaviour {
 
 		foreach(var g in glyphSeq) {
 			var gb = S.Array.Find(buttons, b => b.glyphId == g);
-			ss.Add(gb.generic);
+			ss.Add(gb.genericGlowing);
 		}
 
 		ll.setSprites(ss);
