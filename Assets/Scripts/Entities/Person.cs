@@ -18,6 +18,8 @@ public class Person : MonoBehaviour {
 	Dictionary<string, bool> isBlancos = new Dictionary<string, bool>();
 
 	public bool amIDisposable = true;
+	[HideInInspector]
+	public List<Person> clones = new List<Person>();
 
 	[Range(0f, 1f)]
 	public float minSkinTint=.5f;

@@ -18,22 +18,26 @@ public class TraitController : MonoBehaviour {
 
 	public Trait[] traits;
 
+	List<Person> realPeople = new List<Person>();
+
 	/* ------------- Traits --------------- */
 
 	// Give a person random traits
 	public void RandomizePerson(Person person) {
 		if(!person.amIDisposable) {
+            person.clones = new List<Person>();
+            realPeople.Add(person);
 			foreach(Trait t in traits) {
 				int varId = Random.Range(0, t.variations.Length);
 				GivePersonTrait(t, varId, person, true);
 			}
 		} else {
+            Person clone = realPeople[Random.Range(0, realPeople.Count)];
 			foreach(Trait t in traits) {
-				int varId = t.name == "poncho"
-					? GameController.instance.winColor
-					: Random.Range(0, t.variations.Length);
+                int varId = clone.GetTraitVariation(t.name);
 				GivePersonTrait(t, varId, person, true);
 			}
+            clone.clones.Add(person);
 		}
 	}
 
@@ -49,6 +53,11 @@ public class TraitController : MonoBehaviour {
 		Sprite variant = t.variations[variantId];
 		person.SetTraitVariation(t.name, variantId, variant,
 			variantId == t.blancoId, noAnimation);
+
+        foreach(var clone in person.clones) {
+            clone.SetTraitVariation(t.name, variantId, variant,
+                variantId == t.blancoId, noAnimation);
+        }
 	}
 
 	public Dictionary<int, int> GetTraitVariationsCount(S.String trait) {
