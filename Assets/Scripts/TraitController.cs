@@ -18,26 +18,21 @@ public class TraitController : MonoBehaviour {
 
 	public Trait[] traits;
 
-	HashSet<Dictionary<Trait, int>> personCombinations
-		= new HashSet<Dictionary<Trait, int>>();
-
 	/* ------------- Traits --------------- */
 
 	// Give a person random traits
 	public void RandomizePerson(Person person) {
 		if(!person.amIDisposable) {
-			Dictionary<Trait, int> combination = new Dictionary<Trait, int>();
 			foreach(Trait t in traits) {
 				int varId = Random.Range(0, t.variations.Length);
 				GivePersonTrait(t, varId, person, true);
-				combination[t] = varId;
 			}
-			personCombinations.Add(combination);
 		} else {
-			var combs = personCombinations.ToArray();
-			var comb = combs[Random.Range(0, personCombinations.Count)];
-			foreach(Trait t in comb.Keys) {
-				GivePersonTrait(t, comb[t], person, true);
+			foreach(Trait t in traits) {
+				int varId = t.name == "poncho"
+					? GameController.instance.winColor
+					: Random.Range(0, t.variations.Length);
+				GivePersonTrait(t, varId, person, true);
 			}
 		}
 	}
@@ -91,6 +86,9 @@ public class TraitController : MonoBehaviour {
 
 		foreach(var po in GameObject.FindGameObjectsWithTag("Person")) {
 			Person p = po.GetComponent<Person>();
+
+			if(p.amIDisposable) continue;
+
 			int currHatId = p.GetTraitVariation("hat");
 			int currPonchoId = p.GetTraitVariation("poncho");
 
