@@ -891,6 +891,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 465f9775eec2044e49e2d49017eb9538, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1033024802 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1272146922260692, guid: 14962f2cf459d4b33af18760c08a0b3e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1757309225}
+--- !u!114 &1033024803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1033024802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8e173c225094aabbf22810345007e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialRotation: {x: 0.4082179, y: -0.23456971, z: 0.10938165, w: 0.87542605}
+  finalRotation: {x: 0.9622502, y: -0.022557583, z: 0.25783417, w: 0.08418604}
+  sunLight: {fileID: 1283648668}
 --- !u!1 &1075064593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1305,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1283648666}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 2.41, y: 6.63, z: -1.99}
+  m_LocalPosition: {x: 0, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
