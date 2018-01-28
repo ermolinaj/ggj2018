@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [S.Serializable]
@@ -32,6 +33,8 @@ public class GameController : MonoBehaviour
 	public SymbolSet principalSymbolSet;
 	public LogBoard logBoard;
 	List<NightCycle> nightCycles;
+
+	public ProgressBar turnProgressBar;
 
 	List<char> symbols = new List<char> { '△', '□', 'X', 'O', 'A', 'B', 'C' };
 	List<char> symbolsToUse;
@@ -180,6 +183,8 @@ public class GameController : MonoBehaviour
 
 		foreach (var n in nightCycles)
 			n.oneStep ();
+
+		turnProgressBar.setProgress((float)currentTry / maxRetries);
 
 		StartCoroutine (PostCompleteGlyphSequence ());
 
