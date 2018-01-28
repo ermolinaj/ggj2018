@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeInTime: 1
-  fadeOutTime: 1
+  fadeOutTime: 3
   fadingIn: 1
 --- !u!225 &230730618
 CanvasGroup:
@@ -295,74 +295,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &644872729
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 644872730}
-  - component: {fileID: 644872732}
-  - component: {fileID: 644872731}
-  m_Layer: 5
-  m_Name: Poncho
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &644872730
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 644872729}
-  m_LocalRotation: {x: -0, y: -0, z: -0.037052732, w: 0.99931335}
-  m_LocalPosition: {x: -463.7589, y: 200.72728, z: 0}
-  m_LocalScale: {x: 1.2741411, y: 1.2741408, z: 1.2741408}
-  m_Children: []
-  m_Father: {fileID: 807084030}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.247}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -463.7589, y: 200.72728}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &644872731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 644872729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 85a4396b4007b4ead8915400b6f48967, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &644872732
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 644872729}
 --- !u!1 &807084029
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +306,6 @@ GameObject:
   - component: {fileID: 807084033}
   - component: {fileID: 807084032}
   - component: {fileID: 807084031}
-  - component: {fileID: 807084034}
   - component: {fileID: 807084035}
   m_Layer: 5
   m_Name: Slideshow
@@ -393,7 +324,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 644872730}
   - {fileID: 1206901092}
   m_Father: {fileID: 230730616}
   m_RootOrder: 0
@@ -411,16 +341,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 807084029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f7bcf7e4753403d96106f562e3adf9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4535138c97fc340588565c5bf985b321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ponchoVariations:
-  - {fileID: 21300000, guid: 85a4396b4007b4ead8915400b6f48967, type: 3}
-  - {fileID: 21300000, guid: 7c0c16198927a4cc8bb7229e137d3394, type: 3}
-  - {fileID: 21300000, guid: d8df0899e71c845fbb76d762c62ab1d9, type: 3}
-  - {fileID: 21300000, guid: 5ad100b6141b64490a0f512b09c54171, type: 3}
-  poncho: {fileID: 644872731}
-  percent: {fileID: 1206901093}
+  fader: {fileID: 230730617}
+  nextScene: splash
 --- !u!114 &807084032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -454,19 +379,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 807084029}
---- !u!114 &807084034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 807084029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4535138c97fc340588565c5bf985b321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fader: {fileID: 230730617}
-  nextScene: credits
 --- !u!82 &807084035
 AudioSource:
   m_ObjectHideFlags: 0
@@ -588,7 +500,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.022058845, g: 0.022058845, b: 0.022058845, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -638,7 +550,7 @@ GameObject:
   - component: {fileID: 1206901094}
   - component: {fileID: 1206901093}
   m_Layer: 5
-  m_Name: Percent
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,15 +563,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206901091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -204, y: 211, z: 0}
-  m_LocalScale: {x: 1.8817886, y: 1.8817881, z: 1.8817881}
+  m_LocalPosition: {x: -307, y: 296, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 807084030}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -204, y: 211}
+  m_AnchoredPosition: {x: -307, y: 296}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1206901093
@@ -674,7 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -683,7 +595,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 37
+    m_FontSize: 34
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -694,7 +606,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 50%
+  m_Text: "CREDITS\n-----------------------------------------------------------\nAgust\xEDn
+    Borgna (aborgna) - Programming\nSeba Gavrilov (gseva) - Programming\nCristian
+    Meza (nsom) - Programming / Sound / Music\nErnesto Molina (ernestomolinaj) - VA
+    / Mates\nLeandro Quintana (leoelpeluca) - Concept Art / Sound\nFederico Nicol\xE1s
+    Croci (Nicolas Querti) - Art / 3D\nNikita Zdanovich (znik) - Programming / Art\n-----------------------------------------------------------\nTHANKS\nNGD
+    Studios\nTesters amistosos\nA 'Milanesa', por tener el mejor username de la sede\n-----------------------------------------------------------\nEn
+    memoria de Poncho la Pantera"
 --- !u!222 &1206901094
 CanvasRenderer:
   m_ObjectHideFlags: 0

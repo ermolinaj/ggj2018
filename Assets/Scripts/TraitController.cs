@@ -81,7 +81,7 @@ public class TraitController : MonoBehaviour {
 		foreach (var po in GameObject.FindGameObjectsWithTag("Person")) {
 			Person p = po.GetComponent<Person> ();
 			int currPonchoId = p.GetTraitVariation ("poncho");
-			if (currPonchoId != color)
+			if (currPonchoId == color)
 				count++;
 		}
 		return count;
