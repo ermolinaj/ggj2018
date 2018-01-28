@@ -1852,7 +1852,8 @@ MonoBehaviour:
   - {fileID: 452642353}
   historyLogSize: 10
   logLine: {fileID: 1190738819308500, guid: 77c5daf93f8dc4393a5114c9bf42cd49, type: 2}
-  logSpacing: -27
+  logSpacing: -80
+  cScaler: {fileID: 1679836435}
 --- !u!114 &1640766032
 MonoBehaviour:
   m_ObjectHideFlags: 0
