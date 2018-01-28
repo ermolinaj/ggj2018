@@ -11,8 +11,9 @@ public class WinScn : MonoBehaviour {
 	public Text percent;
 
 	void Start() {
-		poncho.sprite = ponchoVariations[variation];
-		if(Input.GetButtonDown("Skip"))
-			SceneManager.LoadScene(nextScene);
+		poncho.sprite = ponchoVariations[StaticStats.winPoncho];
+		percent.text = "" +
+			((float)StaticStats.convertedCount / StaticStats.personCount)
+			+ "%";
 	}
 }
