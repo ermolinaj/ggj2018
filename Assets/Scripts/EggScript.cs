@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.Runtime.CompilerServices;
 
 public class EggScript : MonoBehaviour
@@ -15,8 +14,8 @@ public class EggScript : MonoBehaviour
 		Vector3 forward = this.transform.forward;
 		forward.y = 0f;
 
-		float vertical = Input.GetAxis("Vertical");
-		float horizontal = Input.GetAxis("Horizontal");
+		float vertical = Input.GetAxis ("Vertical");
+		float horizontal = Input.GetAxis ("Horizontal");
 
 		this.transform.position += vertical * forward * Speed * Time.deltaTime;
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Apple.TV;
 
 [RequireComponent (typeof(Animator))]
 public class DelayAnimationARandomTime : MonoBehaviour
