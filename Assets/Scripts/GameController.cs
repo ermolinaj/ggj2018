@@ -36,6 +36,8 @@ public class GameController : MonoBehaviour
 
 	public ProgressBar turnProgressBar;
 
+	public List<AudioClip> dialogs;
+
 	List<char> symbols = new List<char> { '△', '□', 'X', 'O', 'A', 'B', 'C' };
 	List<char> symbolsToUse;
 
@@ -181,6 +183,7 @@ public class GameController : MonoBehaviour
 		waitingForGlyphs = false;
 		logBoard.addSymbolSet (currentGlyphIdSequence);
 
+
 		foreach (var n in nightCycles)
 			n.oneStep ();
 
@@ -195,6 +198,10 @@ public class GameController : MonoBehaviour
 		var priest = GameObject.FindGameObjectWithTag ("Priest");
 
 		priest.GetComponent<Animator> ().SetBool ("Gospelling", true);
+
+		AudioSource audioSource = GetComponent<AudioSource>();
+
+		audioSource.PlayOneShot(dialogs[currentGlyphIdSequence[0]], 1f);
 
 		yield return new WaitForSeconds (2f);
 
