@@ -11,6 +11,9 @@ public class ProgressBar  : MonoBehaviour {
 	public float initial=0;
 	public float speed = .1f;
 
+	public Color initialColor = Color.green;
+	public Color finalColor = Color.red;
+
 	float target;
 
 	void Start() {
@@ -26,10 +29,11 @@ public class ProgressBar  : MonoBehaviour {
 		else if(target < img.fillAmount)
 			img.fillAmount = Mathf.Max(img.fillAmount -
 					Time.deltaTime * speed, target);
+
+		img.color = Color.Lerp(initialColor, finalColor, img.fillAmount);
 	}
 
 	public void setProgress(float prog) {
-		Debug.Log("set progress "+prog);
 		target = prog;
 	}
 	
