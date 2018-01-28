@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
 	List<int> currentGlyphIdSequence = new List<int> ();
 	List<GlyphType> glyphOrder;
 
-	bool waitingForGlyphs = false;
+	public bool waitingForGlyphs = false;
 	GlyphSequence currSequence = new GlyphSequence ();
 	int currGlyphInSeq = 0;
 	int currentTry = 0;
@@ -164,6 +164,7 @@ public class GameController : MonoBehaviour
 	{
 		Debug.Log ("Completed a new sequence");
 
+		waitingForGlyphs = false;
 		logBoard.addSymbolSet (currentGlyphIdSequence);
 
 		StartCoroutine (PostCompleteGlyphSequence ());
@@ -179,6 +180,7 @@ public class GameController : MonoBehaviour
 		yield return new WaitForSeconds (2f);
 
 		Debug.Log ("Transitioning traits");
+		waitingForGlyphs = true;
 		priest.GetComponent<Animator> ().SetBool ("Gospelling", false);
 
 		traitController.TransitionTraits (currSequence);

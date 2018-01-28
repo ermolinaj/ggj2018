@@ -970,6 +970,10 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1568767885500818, guid: 465f9775eec2044e49e2d49017eb9538, type: 2}
+      propertyPath: m_TagString
+      value: Priest
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 465f9775eec2044e49e2d49017eb9538, type: 2}
   m_IsPrefabParent: 0
