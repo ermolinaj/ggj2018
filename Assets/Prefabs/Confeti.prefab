@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199962789246625736}
   m_Layer: 0
   m_Name: Confeti
-  m_TagString: Untagged
+  m_TagString: Confetti
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,13 +34,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515008381447936}
-  m_LocalRotation: {x: -0.66174304, y: -0.39410692, z: -0.54702705, w: 0.32792893}
-  m_LocalPosition: {x: -4.9089966, y: -1.57, z: 0.8025012}
+  m_LocalRotation: {x: -0.6500542, y: -0.41310242, z: -0.53730243, w: 0.3436307}
+  m_LocalPosition: {x: -3.73, y: -1.7, z: 5.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -120.09599, y: -68.172, z: -18.946991}
+  m_LocalEulerAnglesHint: {x: -117.041, y: -65.787994, z: -21.66101}
 --- !u!198 &198112318043696708
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -53,7 +53,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -101,7 +101,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1940076741
+  randomSeed: 843970432
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -149,7 +149,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 8.287285
+      scalar: 7.0686865
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -545,7 +545,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 7.9933314
+    angle: 19.496233
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -566,7 +566,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.74568605
+      value: 0.37860605
       mode: 0
       spread: 0
       speed:

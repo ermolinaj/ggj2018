@@ -9,6 +9,7 @@ TagManager:
   - Trait
   - GlyphTextBoard
   - Priest
+  - Confetti
   layers:
   - Default
   - TransparentFX

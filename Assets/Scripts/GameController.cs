@@ -62,7 +62,6 @@ public class GameController : MonoBehaviour
 		winColor = StaticPoncho.winPoncho;
 
 		waitingForGlyphs = true;
-		TurnConfetti (false);
 
 		nightCycle = GetComponent<NightCycle> ();
 	}
@@ -208,16 +207,20 @@ public class GameController : MonoBehaviour
 	{
 		if (traitController.CheckIfEverybodyHaveSameColor (winColor)) {
 			Debug.Log ("Ganaste!");
-			TurnConfetti (true);
+			ThrowConfetti ();
 		}
 		if (currentTry >= maxRetries) {
 			Debug.Log ("Perdiste!");
 		}
 	}
 
-	void TurnConfetti (bool enabled)
+	void ThrowConfetti ()
 	{
-		GameObject.FindGameObjectWithTag ("Confetti").SetActive (enabled);
+		var confetties = GameObject.FindGameObjectsWithTag ("Confetti");
+
+		foreach (var confetti in confetties) {
+			confetti.GetComponent<ParticleSystem> ().Play ();
+		}
 	}
 
 }
