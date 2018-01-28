@@ -16,12 +16,11 @@ public class Person : MonoBehaviour {
 	Dictionary<string, int> variationIds = new Dictionary<string, int>();
 	Dictionary<string, bool> isBlancos = new Dictionary<string, bool>();
 
-	void Start() {
-		GameController.instance.traitController.RandomizePerson(this);
-	}
+	public bool amIDisposable = true;
 
-	void Spawn() {
-		// Fall from the sky
+	void Setup(bool disposable) {
+		amIDisposable = disposable;
+		GameController.instance.traitController.RandomizePerson(this);
  	}
 
 	/* ------------- Traits --------------- */

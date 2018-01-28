@@ -1,18 +1,25 @@
-﻿using System.Collections;
+﻿using S = System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+[S.Serializable]
+public struct Spawner {
+	public BoxCollider box;
+	public int numPersons;
+}
 
 public class GameController : MonoBehaviour {
 
 	public static GameController instance = null;
 
-	public int numPersons = 20;
 	public int maxGlyphs = 4;
 	public int maxRetries = 15;
 
 	public GameObject person;
-	public Transform personSpawner;
+	public Spawner[] personSpawners;
+	public Spawner[] disposablePersonSpawnern;
 	public float personDistance = 1;
 
 	public TraitController traitController;
@@ -39,7 +46,10 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SpawnPeople(numPersons);
+		foreach(var s in personSpawners)
+			SpawnPeople(s.numPersons, s.box, false);
+		foreach(var s in disposablePersonSpawnern)
+			SpawnPeople(s.numPersons, s.box, true);
 		
 		// Generate the glyphOrder
 		glyphOrder = new List<GlyphType>()
@@ -60,52 +70,56 @@ public class GameController : MonoBehaviour {
 		ObjectiveTablet.instance.setTrait (poncho.variations[winColor]);
 	}
 
-	void SpawnPeople(int n) {
-		Vector2 centre = new Vector2(
-			personSpawner.position.x, personSpawner.position.z);
-		Vector2 scale = new Vector2(
-			personSpawner.localScale.x, personSpawner.localScale.z);
-
+	void SpawnPeople(int n, BoxCollider spawner, bool disposable) {
 		List<Vector2> positions = new List<Vector2>();
 		bool allPositioned = false;
 		float sqrDistance = Mathf.Pow(personDistance,2);
 		for(int j=0; j < 20; j++) {
-				// Try to position all the people with new coordinates
-				positions = new List<Vector2>();
+			// Try to position all the people with new coordinates
+			positions = new List<Vector2>();
 
-				for (int i=0; i < n; i++) {
-						// Try to position person i, preserving previous positions
-						allPositioned = false;
-						for(var attempt = 0; attempt < 50; attempt++) {
-								Vector2 xz = Random.insideUnitCircle;
-								xz.Set(xz.x * scale.x + centre.x,
-										xz.y * scale.y + centre.y);
+			for (int i=0; i < n; i++) {
+				// Try to position person i, preserving previous positions
+				allPositioned = false;
+				for(var attempt = 0; attempt < 50; attempt++) {
+					Vector3 sp = spawner.transform.position;
 
-								if(positions.Any(v => (v - xz).SqrMagnitude() < sqrDistance))
-										continue;
+					float x = Random.Range(
+						sp.x - spawner.size.x / 2,
+						sp.x + spawner.size.x / 2
+					);
+					float z = Random.Range(
+						sp.z - spawner.size.z / 2,
+						sp.z + spawner.size.z / 2
+					);
+					Vector2 xz = new Vector2(x,z);
 
-								positions.Add(xz);
-								allPositioned = true;
-								break;
-						}
-						if(!allPositioned) {
-								Debug.LogWarning("Failed to position person number "+i
-														+", retrying");
-								break;
-						}
+					if(positions.Any(v => (v - xz).SqrMagnitude() < sqrDistance))
+							continue;
+
+					positions.Add(xz);
+					allPositioned = true;
+					break;
 				}
-
-				if(allPositioned) {
+				if(!allPositioned) {
+						Debug.LogWarning("Failed to position person number "+i
+												+", retrying");
 						break;
 				}
+			}
+
+			if(allPositioned) {
+					break;
+			}
 		}
 		if(!allPositioned) {
-				Debug.LogError("Failed to position all the people :(");
+			Debug.LogError("Failed to position all the people :(");
 		}
 
-		foreach(Vector2 p in positions) {
-			var vector = new Vector3 (p.x, 0, p.y);
-			Instantiate (person, vector, Quaternion.identity);
+		foreach(Vector2 pos in positions) {
+			var vector = new Vector3 (pos.x, 0, pos.y);
+			GameObject p = Instantiate (person, vector, Quaternion.identity);
+			p.GetComponent<Person>().SendMessage("Setup", disposable);
 		}
 	}
 

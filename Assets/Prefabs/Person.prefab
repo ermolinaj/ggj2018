@@ -133,12 +133,9 @@ MonoBehaviour:
   traits:
   - name: hat
     traitRenderer: {fileID: 212050632582734224}
-    variationID: 0
-    isBlanco: 0
   - name: poncho
     traitRenderer: {fileID: 212718051791806602}
-    variationID: 0
-    isBlanco: 0
+  amIDisposable: 1
 --- !u!114 &114553682053726362
 MonoBehaviour:
   m_ObjectHideFlags: 1
