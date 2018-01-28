@@ -15,8 +15,8 @@ public class DelayAnimationARandomTime : MonoBehaviour
 	void Start ()
 	{
 		Remaining = Random.Range (MinSeconds, MaxSeconds);
-		this.GetComponent<Animator> ().enabled = false;
 		this.GetComponent<Animator> ().speed = this.GetComponent<Animator> ().speed * (1 + (AlterAnimationSpeedUpToPercent / 100) * Random.Range (-1f, 1f));
+		this.GetComponent<Animator> ().enabled = false;
 	}
 	
 	// Update is called once per frame
