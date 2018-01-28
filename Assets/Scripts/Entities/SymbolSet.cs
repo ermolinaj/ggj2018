@@ -27,7 +27,7 @@ public class SymbolSet : MonoBehaviour {
 
 			symbols[i].enabled = true;
 			Image img = symbols[i];
-			img.sprite = gb.depressed;
+			img.sprite = gb.generic;
 		}
 	}
 
