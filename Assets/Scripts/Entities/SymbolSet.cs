@@ -8,7 +8,7 @@ public class SymbolSet : MonoBehaviour {
 	public Sprite emptySymbol;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		setEmptySymbols ();
 	}
 
